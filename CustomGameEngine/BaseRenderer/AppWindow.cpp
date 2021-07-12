@@ -32,6 +32,18 @@ void AppWindow::onCreate()
 	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
 	//All vertices to draw
+	vertex Star[] = 
+	{
+		{-0.4f, 0.0f, 0.0f,  1, 1, 0}, //Left Point
+		{-0.1f, 0.1f, 0.0f,  1, 1, 0}, //Upper Left Brace
+		{-0.1f, -0.1f, 0.0f,  1, 1, 0}, //Lower Left Brace
+		{0.0f, 0.5f, 0.0f,  1, 1, 0}, //Upper Point
+		{0.0f, -0.5f, 0.0f,  1, 1, 0}, //Lower Point
+		{0.1f, 0.1f, 0.0f,  1, 1, 0}, //Upper Right Brace
+		{0.1f, -0.1f, 0.0f,  1, 1, 0}, //Lower Right Brace
+		{0.4f, 0.0f, 0.0f,  1, 1, 0} //Right Point
+	};
+	 
 	//Rainbow Rectangle (The Pride flag lol) 
 	vertex RainbowRect[] = 
 	{
@@ -138,7 +150,10 @@ void AppWindow::onCreate()
 	};
 
 	//Create Vertex buffers
-	vb_RR=GraphicsEngine::get()->createVertexBuffer();
+	vb_RS = GraphicsEngine::get()->createVertexBuffer();
+	UINT size_listRS = ARRAYSIZE(Star);
+
+	vb_RR = GraphicsEngine::get()->createVertexBuffer();
 	UINT size_listRR = ARRAYSIZE(RainbowRect);
 
 	vb_GR = GraphicsEngine::get()->createVertexBuffer();
@@ -160,11 +175,12 @@ void AppWindow::onCreate()
 	m_vs=GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
 
 	//Load vertices into their respective buffers with the shader data
+	vb_RS->load(Star, sizeof(vertex), size_listRS, shader_byte_code, size_shader);
 	vb_RR->load(RainbowRect, sizeof(vertex), size_listRR, shader_byte_code, size_shader);
 	vb_GR->load(GreenRect, sizeof(vertex), size_listRG, shader_byte_code, size_shader);
 	vb_RTC->load(RTCore, sizeof(vertex), size_listRTC, shader_byte_code, size_shader);
-	vb_RTLM->load(RTLeftMask, sizeof(vertex), size_listRTC, shader_byte_code, size_shader);
-	vb_RTRM->load(RTRightMask, sizeof(vertex), size_listRTC, shader_byte_code, size_shader);
+	vb_RTLM->load(RTLeftMask, sizeof(vertex), size_listRTLM, shader_byte_code, size_shader);
+	vb_RTRM->load(RTRightMask, sizeof(vertex), size_listRTRM, shader_byte_code, size_shader);
 
 	//Release vertex shader
 	GraphicsEngine::get()->releaseCompiledShader();
@@ -192,6 +208,10 @@ void AppWindow::onUpdate()
 	//SET DEFAULT SHADER IN THE GRAPHICS PIPELINE TO BE ABLE TO DRAW
 	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(m_vs);
 	GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(m_ps);
+
+	//Regular Primogem
+	//GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(vb_RS);
+	//GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(vb_RS->getSizeVertexList(), 0);
 
 	//Rainbow rect
 	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(vb_RR);

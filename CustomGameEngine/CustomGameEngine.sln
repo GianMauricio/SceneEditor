@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BaseRenderer", "BaseRenderer\BaseRenderer.vcxproj", "{6E95FA0A-5351-4A44-B217-1661863C6C45}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddingAnimations", "AddingAnimations\AddingAnimations.vcxproj", "{4B607B58-1A10-421E-A939-D27369E1B122}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{6E95FA0A-5351-4A44-B217-1661863C6C45}.Release|x64.Build.0 = Release|x64
 		{6E95FA0A-5351-4A44-B217-1661863C6C45}.Release|x86.ActiveCfg = Release|Win32
 		{6E95FA0A-5351-4A44-B217-1661863C6C45}.Release|x86.Build.0 = Release|Win32
+		{4B607B58-1A10-421E-A939-D27369E1B122}.Debug|x64.ActiveCfg = Debug|x64
+		{4B607B58-1A10-421E-A939-D27369E1B122}.Debug|x64.Build.0 = Debug|x64
+		{4B607B58-1A10-421E-A939-D27369E1B122}.Debug|x86.ActiveCfg = Debug|Win32
+		{4B607B58-1A10-421E-A939-D27369E1B122}.Debug|x86.Build.0 = Debug|Win32
+		{4B607B58-1A10-421E-A939-D27369E1B122}.Release|x64.ActiveCfg = Release|x64
+		{4B607B58-1A10-421E-A939-D27369E1B122}.Release|x64.Build.0 = Release|x64
+		{4B607B58-1A10-421E-A939-D27369E1B122}.Release|x86.ActiveCfg = Release|Win32
+		{4B607B58-1A10-421E-A939-D27369E1B122}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
