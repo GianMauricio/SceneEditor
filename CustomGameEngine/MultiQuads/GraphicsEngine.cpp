@@ -16,11 +16,6 @@ GraphicsEngine::GraphicsEngine()
 
 GraphicsEngine* GraphicsEngine::getInstance()
 {
-	if (sharedInstance == NULL)
-	{
-		sharedInstance = new GraphicsEngine();
-	}
-
 	return sharedInstance;
 }
 

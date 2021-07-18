@@ -1,4 +1,5 @@
 #pragma once
+#include "Shape.h";
 #include "Window.h"
 #include "GraphicsEngine.h"
 #include "SwapChain.h"
@@ -29,10 +30,9 @@ private:
 	static AppWindow* sharedInstance;
 
 	SwapChain * m_swap_chain;
-	VertexBuffer* m_vb;
-	VertexShader* m_vs;
-	PixelShader* m_ps;
-	ConstantBuffer* m_cb;
+	Shape shape1;
+	Shape shape2;
+	Shape shape3;
 
 	unsigned long m_old_time = 0;
 	float m_delta_time = 0;

@@ -39,6 +39,9 @@
     <ClCompile Include="VertexShader.cpp">
       <Filter>Engine\RenderEngine\VertexShader</Filter>
     </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -67,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="VertexShader.h">
       <Filter>Engine\RenderEngine\VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +105,9 @@
     </Filter>
     <Filter Include="Engine\RenderEngine\VertexShader">
       <UniqueIdentifier>{2fb67222-fbf6-4c13-ad49-453ef31820bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses">
+      <UniqueIdentifier>{7441fac3-c8e1-4f55-af80-0d9448d0a696}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

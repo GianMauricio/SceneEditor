@@ -128,6 +128,7 @@ void Window::setHWND(HWND hwnd)
 
 void Window::onCreate()
 {
+	init();
 }
 
 void Window::onUpdate()
