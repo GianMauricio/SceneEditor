@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BaseRenderer", "BaseRendere
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddingAnimations", "AddingAnimations\AddingAnimations.vcxproj", "{4B607B58-1A10-421E-A939-D27369E1B122}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiQuads", "MultiQuads\MultiQuads.vcxproj", "{43C042D5-3653-45C9-8C83-ADFAEA86DB95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{4B607B58-1A10-421E-A939-D27369E1B122}.Release|x64.Build.0 = Release|x64
 		{4B607B58-1A10-421E-A939-D27369E1B122}.Release|x86.ActiveCfg = Release|Win32
 		{4B607B58-1A10-421E-A939-D27369E1B122}.Release|x86.Build.0 = Release|Win32
+		{43C042D5-3653-45C9-8C83-ADFAEA86DB95}.Debug|x64.ActiveCfg = Debug|x64
+		{43C042D5-3653-45C9-8C83-ADFAEA86DB95}.Debug|x64.Build.0 = Debug|x64
+		{43C042D5-3653-45C9-8C83-ADFAEA86DB95}.Debug|x86.ActiveCfg = Debug|Win32
+		{43C042D5-3653-45C9-8C83-ADFAEA86DB95}.Debug|x86.Build.0 = Debug|Win32
+		{43C042D5-3653-45C9-8C83-ADFAEA86DB95}.Release|x64.ActiveCfg = Release|x64
+		{43C042D5-3653-45C9-8C83-ADFAEA86DB95}.Release|x64.Build.0 = Release|x64
+		{43C042D5-3653-45C9-8C83-ADFAEA86DB95}.Release|x86.ActiveCfg = Release|Win32
+		{43C042D5-3653-45C9-8C83-ADFAEA86DB95}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
