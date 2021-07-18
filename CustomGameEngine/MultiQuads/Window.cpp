@@ -109,7 +109,7 @@ bool Window::release()
 	return true;
 }
 
-bool Window::isRun()
+bool Window::isRunning()
 {
 	return m_is_run;
 }
@@ -137,6 +137,11 @@ void Window::onUpdate()
 void Window::onDestroy()
 {
 	m_is_run = false;
+}
+
+HWND Window::getWindowHandle()
+{
+	return this->m_hwnd;
 }
 
 Window::~Window()

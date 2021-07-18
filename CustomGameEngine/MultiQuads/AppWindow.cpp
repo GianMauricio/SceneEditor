@@ -1,6 +1,7 @@
 #include "AppWindow.h"
 #include <Windows.h>
 
+AppWindow* AppWindow::sharedInstance = NULL;
 
 struct vec3
 {
@@ -32,59 +33,33 @@ AppWindow::~AppWindow()
 {
 }
 
+AppWindow* AppWindow::getInstance()
+{
+	if (sharedInstance == NULL)
+	{
+		sharedInstance = new AppWindow();
+	}
+
+	return sharedInstance;
+}
+
+void AppWindow::initialize()
+{
+	sharedInstance = new AppWindow();
+}
+
 void AppWindow::onCreate()
 {
 	Window::onCreate();
-	GraphicsEngine::get()->init();
-	m_swap_chain=GraphicsEngine::get()->createSwapChain();
-
-	RECT rc = this->getClientWindowRect();
-	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
-
-	vertex shape[] = 
-	{
-		//X1 - Y1 - Z1, X2 - Y2 - Z2, R1 - G1 - B1, R2 - G2 - B2   
-		{-0.4f, 0.0f, 0.0f, -0.6f, 0.0f, 0.0f,  1, 1, 0,  0, 1, 0}, //Left Point, Yellow - Green
-		{-0.1f, 0.1f, 0.0f, -0.1f, 0.1f, 0.0f,  0, 0, 1,  1, 0, 0}, //Upper Left Brace (Unmoving), Blue - Red
-		{-0.1f, -0.1f, 0.0f, -0.1f, -0.1f, 0.0f,  0, 0, 1,  1, 0, 0}, //Lower Left Brace (Unmoving), Blue - Red
-		{0.0f, 0.5f, 0.0f, 0.0f, 0.7f, 0.0f,  1, 1, 0,  0, 1, 0}, //Upper Point, Yellow - Green
-		{0.0f, -0.5f, 0.0f, 0.0f, -0.7f, 0.0f,  1, 1, 0,  0, 1, 0}, //Lower Point, Yellow - Green
-		{0.1f, 0.1f, 0.0f, 0.1f, 0.1f, 0.0f,  0, 0, 1,  1, 0, 0}, //Upper Right Brace (Unmoving), Blue - Red
-		{0.1f, -0.1f, 0.0f, 0.1f, -0.1f, 0.0f,  0, 0, 1,  1, 0, 0}, //Lower Right Brace (Unmoving), Blue - Red
-		{0.4f, 0.0f, 0.0f, 0.6f, 0.0f, 0.0f,  1, 1, 0,  0, 1, 0} //Right Point, Yellow - Green
-	};
-
-	m_vb=GraphicsEngine::get()->createVertexBuffer();
-	UINT size_list = ARRAYSIZE(shape);
-
-	void* shader_byte_code = nullptr;
-	size_t size_shader = 0;
-	GraphicsEngine::get()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
-
-	m_vs=GraphicsEngine::get()->createVertexShader(shader_byte_code, size_shader);
-	m_vb->load(shape, sizeof(vertex), size_list, shader_byte_code, size_shader);
-
-	GraphicsEngine::get()->releaseCompiledShader();
-
-
-	GraphicsEngine::get()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
-	m_ps = GraphicsEngine::get()->createPixelShader(shader_byte_code, size_shader);
-	GraphicsEngine::get()->releaseCompiledShader();
-
-	constant cc;
-	cc.m_angle = 0;
-
-	m_cb = GraphicsEngine::get()->createConstantBuffer();
-	m_cb->load(&cc, sizeof(constant));
-
+	GraphicsEngine::getInstance()->init();
 }
 
 void AppWindow::onUpdate()
 {
 	Window::onUpdate();
-	GraphicsEngine::get()->getImmediateDeviceContext()->clearRenderTargetColor(this->m_swap_chain, 0, 0.3f, 0.4f, 1);
+	GraphicsEngine::getInstance()->getImmediateDeviceContext()->clearRenderTargetColor(this->m_swap_chain, 0, 0.3f, 0.4f, 1);
 	RECT rc = this->getClientWindowRect();
-	GraphicsEngine::get()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
+	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
 	//Animation starts here
 	//Time calculations
@@ -102,18 +77,18 @@ void AppWindow::onUpdate()
 	constant cc;
 	cc.m_angle = m_angle;
 
-	m_cb->update(GraphicsEngine::get()->getImmediateDeviceContext(), &cc);
+	m_cb->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 
-	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_vs, m_cb);
-	GraphicsEngine::get()->getImmediateDeviceContext()->setConstantBuffer(m_ps, m_cb);
+	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setConstantBuffer(m_vs, m_cb);
+	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setConstantBuffer(m_ps, m_cb);
 
-	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexShader(m_vs);
-	GraphicsEngine::get()->getImmediateDeviceContext()->setPixelShader(m_ps);
+	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setVertexShader(m_vs);
+	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setPixelShader(m_ps);
 
 
-	GraphicsEngine::get()->getImmediateDeviceContext()->setVertexBuffer(m_vb);
+	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setVertexBuffer(m_vb);
 
-	GraphicsEngine::get()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
+	GraphicsEngine::getInstance()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
 	m_swap_chain->present(true);
 }
 
@@ -124,5 +99,57 @@ void AppWindow::onDestroy()
 	m_swap_chain->release();
 	m_vs->release();
 	m_ps->release();
-	GraphicsEngine::get()->release();
+	GraphicsEngine::getInstance()->release();
+}
+
+void AppWindow::initializeEngine()
+{
+	GraphicsEngine::initialize();
+	GraphicsEngine* gEngine = GraphicsEngine::getInstance();
+	m_swap_chain = GraphicsEngine::getInstance()->createSwapChain();
+
+	RECT rc = this->getClientWindowRect();
+	int width = rc.right - rc.left;
+	int height = rc.bottom - rc.top;
+
+	m_swap_chain->init(this->getWindowHandle(), width, height); //Redundant
+	
+	void* shader_byte_code = nullptr;
+	size_t size_shader = 0;
+
+	//Vertices
+	gEngine->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
+	m_vs = gEngine->createVertexShader(shader_byte_code, size_shader);
+
+	//VertexData
+	vertex shape[] =
+	{
+		//X1 - Y1 - Z1, X2 - Y2 - Z2, R1 - G1 - B1, R2 - G2 - B2   
+		{-0.4f, 0.0f, 0.0f, -0.6f, 0.0f, 0.0f,  1, 1, 0,  0, 1, 0}, //Left Point, Yellow - Green
+		{-0.1f, 0.1f, 0.0f, -0.1f, 0.1f, 0.0f,  0, 0, 1,  1, 0, 0}, //Upper Left Brace (Unmoving), Blue - Red
+		{-0.1f, -0.1f, 0.0f, -0.1f, -0.1f, 0.0f,  0, 0, 1,  1, 0, 0}, //Lower Left Brace (Unmoving), Blue - Red
+		{0.0f, 0.5f, 0.0f, 0.0f, 0.7f, 0.0f,  1, 1, 0,  0, 1, 0}, //Upper Point, Yellow - Green
+		{0.0f, -0.5f, 0.0f, 0.0f, -0.7f, 0.0f,  1, 1, 0,  0, 1, 0}, //Lower Point, Yellow - Green
+		{0.1f, 0.1f, 0.0f, 0.1f, 0.1f, 0.0f,  0, 0, 1,  1, 0, 0}, //Upper Right Brace (Unmoving), Blue - Red
+		{0.1f, -0.1f, 0.0f, 0.1f, -0.1f, 0.0f,  0, 0, 1,  1, 0, 0}, //Lower Right Brace (Unmoving), Blue - Red
+		{0.4f, 0.0f, 0.0f, 0.6f, 0.0f, 0.0f,  1, 1, 0,  0, 1, 0} //Right Point, Yellow - Green
+	};
+
+	//Vertex buffers
+	m_vb = gEngine->createVertexBuffer();
+	UINT size_list = ARRAYSIZE(shape);
+	m_vb->load(shape, sizeof(vertex), size_list, shader_byte_code, size_shader);
+
+	gEngine->releaseCompiledShader();
+
+
+	gEngine->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
+	m_ps = gEngine->createPixelShader(shader_byte_code, size_shader);
+	gEngine->releaseCompiledShader();
+
+	constant cc;
+	cc.m_angle = 0;
+
+	m_cb = gEngine->createConstantBuffer();
+	m_cb->load(&cc, sizeof(constant));
 }

@@ -109,7 +109,7 @@ bool Window::release()
 	return true;
 }
 
-bool Window::isRun()
+bool Window::isRunning()
 {
 	return m_is_run;
 }

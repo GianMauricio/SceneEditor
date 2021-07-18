@@ -12,7 +12,7 @@ public:
 	bool broadcast();
 	//Release the window
 	bool release();
-	bool isRun();
+	bool isRunning();
 
 	RECT getClientWindowRect();
 	void setHWND(HWND hwnd);
@@ -23,6 +23,7 @@ public:
 	virtual void onUpdate();
 	virtual void onDestroy();
 
+	HWND getWindowHandle();
 
 	~Window();
 protected:

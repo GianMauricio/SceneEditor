@@ -8,8 +8,34 @@
 
 #include <d3dcompiler.h>
 
+GraphicsEngine* GraphicsEngine::sharedInstance = NULL;
+
 GraphicsEngine::GraphicsEngine()
 {
+}
+
+GraphicsEngine* GraphicsEngine::getInstance()
+{
+	if (sharedInstance == NULL)
+	{
+		sharedInstance = new GraphicsEngine();
+	}
+
+	return sharedInstance;
+}
+
+void GraphicsEngine::initialize()
+{
+	sharedInstance = new GraphicsEngine();
+	sharedInstance->init();
+}
+
+void GraphicsEngine::destroy()
+{
+	if(sharedInstance != NULL)
+	{
+		sharedInstance->release();
+	}
 }
 
 bool GraphicsEngine::init()
@@ -52,7 +78,6 @@ bool GraphicsEngine::init()
 	return true;
 }
 
-
 bool GraphicsEngine::release()
 {
 	if (m_vs)m_vs->Release();
@@ -80,7 +105,6 @@ SwapChain * GraphicsEngine::createSwapChain()
 {
 	return new SwapChain();
 }
-
 
 DeviceContext * GraphicsEngine::getImmediateDeviceContext()
 {
@@ -156,12 +180,4 @@ bool GraphicsEngine::compilePixelShader(const wchar_t * file_name, const char * 
 void GraphicsEngine::releaseCompiledShader()
 {
 	if (m_blob)m_blob->Release();
-}
-
-
-
-GraphicsEngine * GraphicsEngine::get()
-{
-	static GraphicsEngine engine;
-	return &engine;
 }

@@ -11,14 +11,23 @@
 class AppWindow: public Window
 {
 public:
-	AppWindow();
-	~AppWindow();
+	static AppWindow* getInstance();
+	static void initialize();
 
 	// Inherited via Window
 	virtual void onCreate() override;
 	virtual void onUpdate() override;
 	virtual void onDestroy() override;
+
+	void initializeEngine();
+	
 private:
+	AppWindow();
+	~AppWindow();
+	AppWindow(AppWindow const&) {};
+	AppWindow& operator = (AppWindow const&) {};
+	static AppWindow* sharedInstance;
+
 	SwapChain * m_swap_chain;
 	VertexBuffer* m_vb;
 	VertexShader* m_vs;
