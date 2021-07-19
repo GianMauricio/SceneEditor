@@ -56,14 +56,10 @@ void AppWindow::onUpdate()
 	this->shape1.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 	this->shape2.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 	this->shape3.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
+
 	shape1.draw();
 	shape2.draw();
 	shape3.draw();
-
-	//Text draw
-	text1.DrawTextW();
-	text1.DrawD2DContent();
-	
 
 	m_swap_chain->present(true);
 }
@@ -104,5 +100,4 @@ void AppWindow::initializeEngine()
 
 	//Initialize text data
 	std::cout << "InitializingText" << std::endl;
-	text1.Initialize(this->getWindowHandle());
 }

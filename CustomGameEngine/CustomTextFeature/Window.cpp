@@ -49,7 +49,7 @@ bool Window::init()
 	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 	wc.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
-	wc.hInstance = NULL;
+	wc.hInstance = HINST_THISCOMPONENT;
 	wc.lpszClassName = L"MyWindowClass";
 	wc.lpszMenuName = L"";
 	wc.style = NULL;

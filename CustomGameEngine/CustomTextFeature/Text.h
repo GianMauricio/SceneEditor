@@ -19,50 +19,75 @@ template <class T> void SafeRelease(T** ppT)
         *ppT = NULL;
     }
 }
-
+#ifndef HINST_THISCOMPONENT
+EXTERN_C IMAGE_DOS_HEADER __ImageBase;
+#define HINST_THISCOMPONENT ((HINSTANCE)&__ImageBase)
+#endif
 class Text
 {
 public:
-	Text();
-	~Text();
+    Text();
+    ~Text();
 
-    //Initialize
-	HRESULT Initialize(HWND hwndParent);
-	HWND getHwnd();
+    HRESULT Initialize(HWND hwndParent);
 
-    //Edit
-    HRESULT CreateDeviceIndependentResources();
-    void DiscardDeviceIndependentResources();
-    HRESULT CreateDeviceResources();
-    void DiscardDeviceResources();
-
-    //Draw
-    HRESULT DrawD2DContent();
-    HRESULT DrawText();
-
-    //Change text size
-    void OnResize(UINT width,UINT height);
-
-    //Status check
-    static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+    HWND GetHwnd() { return hwnd_; }
 
 private:
-    HWND hwnd;
+    HRESULT CreateDeviceIndependentResources(
+    );
 
-    //Scale relative to 96DPI
-    float dpiScaleX;
-    float dpiScaleY;
+    void DiscardDeviceIndependentResources(
+    );
+
+    HRESULT CreateDeviceResources(
+    );
+
+    void DiscardDeviceResources(
+    );
+
+    HRESULT DrawD2DContent(
+    );
+
+    HRESULT DrawText(
+    );
+
+    void OnResize(
+        UINT width,
+        UINT height
+    );
+
+    static LRESULT CALLBACK WndProc(
+        HWND hWnd,
+        UINT message,
+        WPARAM wParam,
+        LPARAM lParam
+    );
+
+private:
+    HWND hwnd_;
+
+    // how much to scale a design that assumes 96-DPI pixels
+    float dpiScaleX_;
+    float dpiScaleY_;
 
     // Direct2D
-    ID2D1Factory* D2DFactory;
-    ID2D1HwndRenderTarget* pRT;
-    ID2D1SolidColorBrush* pBlackBrush;
+
+    ID2D1Factory* pD2DFactory_;
+    ID2D1HwndRenderTarget* pRT_;
+    ID2D1SolidColorBrush* pBlackBrush_;
+
 
     // DirectWrite
-    IDWriteFactory* DWriteFactory;
-    IDWriteTextFormat* pTextFormat;
 
-    const wchar_t* wszText; /*The actual string element but not really*/
-    UINT32 cTextLength;
+    IDWriteFactory* pDWriteFactory_;
+    IDWriteTextFormat* pTextFormat_;
+
+
+
+    const wchar_t* wszText_;
+    UINT32 cTextLength_;
+
+
 };
 
