@@ -67,7 +67,7 @@ bool Window::init()
 	if (!m_hwnd) 
 		return false;
 
-	//show up the window
+	//show the window
 	::ShowWindow(m_hwnd, SW_SHOW);
 	::UpdateWindow(m_hwnd);
 

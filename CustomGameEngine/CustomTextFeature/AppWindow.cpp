@@ -52,13 +52,18 @@ void AppWindow::onUpdate()
 	constant cc;
 	cc.m_angle = m_angle;
 
-	//Shape 1 draw
+	//Shape draw
 	this->shape1.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 	this->shape2.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 	this->shape3.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 	shape1.draw();
 	shape2.draw();
 	shape3.draw();
+
+	//Text draw
+	text1.DrawTextW();
+	text1.DrawD2DContent();
+	
 
 	m_swap_chain->present(true);
 }
@@ -96,4 +101,8 @@ void AppWindow::initializeEngine()
 	vec3 shape3Pos = { -0.5, 0.5, 0.0 };
 	vec3 shape3Scale = { 1.5, 1.5, 1.5 };
 	shape3.initialize(shape3Pos, shape3Scale);
+
+	//Initialize text data
+	std::cout << "InitializingText" << std::endl;
+	text1.Initialize(this->getWindowHandle());
 }

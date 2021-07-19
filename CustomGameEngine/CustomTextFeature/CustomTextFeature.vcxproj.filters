@@ -42,6 +42,9 @@
     <ClCompile Include="Shape.cpp">
       <Filter>Engine\RenderEngine\ShapeClasses</Filter>
     </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Engine\RenderEngine\Text</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -73,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Engine\RenderEngine\Text</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +114,9 @@
     </Filter>
     <Filter Include="Engine\RenderEngine\ShapeClasses">
       <UniqueIdentifier>{7441fac3-c8e1-4f55-af80-0d9448d0a696}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\Text">
+      <UniqueIdentifier>{fdae76cd-a056-40d7-8a4a-12aff55089e8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
