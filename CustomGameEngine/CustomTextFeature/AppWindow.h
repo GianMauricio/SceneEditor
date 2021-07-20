@@ -1,6 +1,5 @@
 #pragma once
 #include "Shape.h";
-#include "Text.h"
 #include "Window.h"
 #include "GraphicsEngine.h"
 #include "SwapChain.h"
@@ -34,7 +33,6 @@ private:
 	Shape shape1;
 	Shape shape2;
 	Shape shape3;
-	Text text1;
 
 	unsigned long m_old_time = 0;
 	float m_delta_time = 0;

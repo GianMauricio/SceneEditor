@@ -21,6 +21,8 @@ public:
 	bool release();
 	SwapChain * createSwapChain();
 	DeviceContext* getImmediateDeviceContext();
+	ID3D11DeviceContext* getD11Context();
+	ID3D11Device* getDevice();
 	VertexBuffer* createVertexBuffer();
 	ConstantBuffer* createConstantBuffer();
 	VertexShader* createVertexShader(const void* shader_byte_code, size_t byte_code_size);
