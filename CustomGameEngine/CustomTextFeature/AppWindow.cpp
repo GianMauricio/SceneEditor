@@ -59,7 +59,8 @@ void AppWindow::onUpdate()
 	shape1.draw();
 	shape2.draw();
 	shape3.draw();
-	
+	text.draw();
+
 
 	m_swap_chain->present(true);
 }
@@ -98,4 +99,6 @@ void AppWindow::initializeEngine()
 	vec3 shape3Scale = { 1.5, 1.5, 1.5 };
 	shape3.initialize(shape3Pos, shape3Scale);
 
+	//initialize text
+	text.initialize();
 }

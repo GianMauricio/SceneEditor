@@ -1,10 +1,9 @@
 #include <d3d11.h>
 #include "Text.h"
 #include "SimpleMath.h"
-Text::Text(const wchar_t output)
+Text::Text()
 {
 	std::cout << "Made text object" << std::endl;
-	storedText = output;
 }
 
 Text::~Text()

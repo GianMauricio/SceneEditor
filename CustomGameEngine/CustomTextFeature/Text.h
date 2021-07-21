@@ -9,7 +9,7 @@ using namespace DirectX;
 class Text
 {
 public:
-	Text(const wchar_t output);
+	Text();
 	~Text();
 
 	//Make stuff work
