@@ -10,7 +10,7 @@ Shape::~Shape()
 {
 }
 
-void Shape::initialize(vec3 position, vec3 scale)
+void Shape::initialize(vec3 position, vec3 scale, vec3 color)
 {
 	//Get instance of engine
 	GraphicsEngine* gEngine = GraphicsEngine::getInstance();
@@ -20,18 +20,67 @@ void Shape::initialize(vec3 position, vec3 scale)
 	vertex shape[] =
 	{
 		//X1 - Y1 - Z1, X2 - Y2 - Z2, R1 - G1 - B1, R2 - G2 - B2   
-		{-0.3f * scale.x + position.x, 0.2f * scale.y + position.y, 0.0f * scale.z + position.z,
-		 -0.3f * scale.x + position.x, 0.2f * scale.y + position.y, 0.0f * scale.z + position.z,
-		  1, 0, 0, 0, 0, 1}, //Upper Left Corner
-		{ 0.3f * scale.x + position.x, 0.2f * scale.y + position.y, 0.0f * scale.z + position.z,
-		  0.3f * scale.x + position.x, 0.2f * scale.y + position.y, 0.0f * scale.z + position.z,
-		  1, 0, 0, 0, 0, 1}, //Upper Right Corner
-		{-0.3f * scale.x + position.x, -0.2f * scale.y + position.y, 0.0f * scale.z + position.z,
-		 -0.3f * scale.x + position.x, -0.2f * scale.y + position.y, 0.0f * scale.z + position.z,
-		  1, 0, 0, 0, 0, 1}, //Lower Left Corner
-		{ 0.3f * scale.x + position.x, -0.2f * scale.y + position.y, 0.0f * scale.z + position.z,
-		  0.3f * scale.x + position.x, -0.2f * scale.y + position.y, 0.0f * scale.z + position.z,
-		  1, 0, 0, 0, 0, 1}, //Lower Right Corner
+		{-1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		 -1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  color.x, color.y, color.z, color.x, color.y, color.z}, //Upper Left Corner
+		{ 1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  color.x, color.y, color.z, color.x, color.y, color.z}, //Upper Right Corner
+		{-1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		 -1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  color.x, color.y, color.z, color.x, color.y, color.z}, //Lower Left Corner
+		{ 1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  color.x, color.y, color.z, color.x, color.y, color.z}, //Lower Right Corner
+	};
+
+	//Generate shape data
+	void* shader_byte_code = nullptr;
+	size_t size_shader = 0;
+
+	gEngine->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
+	this->m_vs = gEngine->createVertexShader(shader_byte_code, size_shader);
+
+	//Vertex buffers
+	UINT size_list = ARRAYSIZE(shape);
+
+	this->m_vb = gEngine->createVertexBuffer();
+	this->m_vb->load(shape, sizeof(vertex), size_list, shader_byte_code, size_shader);
+
+	gEngine->releaseCompiledShader();
+	gEngine->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
+	this->m_ps = gEngine->createPixelShader(shader_byte_code, size_shader);
+	gEngine->releaseCompiledShader();
+
+	constant cc;
+	cc.m_angle = 0;
+
+	this->m_cb = gEngine->createConstantBuffer();
+	this->m_cb->load(&cc, sizeof(constant));
+}
+
+void Shape::initialize(vec3 position1, vec3 position2, vec3 scale1, vec3 scale2, vec3 color1, vec3 color2)
+{
+	//Get instance of engine
+	GraphicsEngine* gEngine = GraphicsEngine::getInstance();
+
+	//Is there a way to change this?
+	//VertexData
+	vertex shape[] =
+	{
+		//X1 - Y1 - Z1, X2 - Y2 - Z2, R1 - G1 - B1, R2 - G2 - B2   
+		{-1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		 -1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  color.x, color.y, color.z, color.x, color.y, color.z}, //Upper Left Corner
+		{ 1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  color.x, color.y, color.z, color.x, color.y, color.z}, //Upper Right Corner
+		{-1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		 -1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  color.x, color.y, color.z, color.x, color.y, color.z}, //Lower Left Corner
+		{ 1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
+		  color.x, color.y, color.z, color.x, color.y, color.z}, //Lower Right Corner
 	};
 
 	//Generate shape data

@@ -37,6 +37,15 @@
     <Filter Include="Engine\RenderEngine\VertexShader">
       <UniqueIdentifier>{959ee7fb-d008-4762-bb00-48365df9f1bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\RenderEngine\Time">
+      <UniqueIdentifier>{b1c70572-ff01-4542-85b8-ed23bcea634b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Math">
+      <UniqueIdentifier>{340e6f3c-3125-48f1-8b42-58b0ee09718f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Time">
+      <UniqueIdentifier>{7f01ec8b-1bdd-41a8-ba55-a239be344402}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppWindow.cpp">
@@ -75,6 +84,9 @@
     <ClCompile Include="Window.cpp">
       <Filter>Engine\WindowSystem</Filter>
     </ClCompile>
+    <ClCompile Include="EngineTime.cpp">
+      <Filter>Engine\Time</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -109,6 +121,15 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Engine\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTime.h">
+      <Filter>Engine\Time</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

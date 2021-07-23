@@ -34,7 +34,8 @@ public:
 	Shape();
 	~Shape();
 
-	void initialize(vec3 position, vec3 scale);
+	void initialize(vec3 position, vec3 scale, vec3 color);
+	void initialize(vec3 position1, vec3 position2, vec3 scale1, vec3 scale2, vec3 color1, vec3 color2);
 	void draw();
 	void destroy();
 	VertexBuffer* getVB();

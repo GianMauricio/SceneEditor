@@ -52,15 +52,13 @@ void AppWindow::onUpdate()
 	constant cc;
 	cc.m_angle = m_angle;
 
-	//Shape draw
+	//Shape 1 draw
 	this->shape1.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 	this->shape2.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 	this->shape3.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 	shape1.draw();
 	shape2.draw();
 	shape3.draw();
-	text.draw();
-
 
 	m_swap_chain->present(true);
 }
@@ -90,15 +88,4 @@ void AppWindow::initializeEngine()
 	vec3 shape1Pos = { 0.5, 0.5, 0.0 };
 	vec3 shape1Scale = { 1, 1, 1 };
 	shape1.initialize(shape1Pos, shape1Scale);
-
-	vec3 shape2Pos = { -0.5, -0.5, 0.0 };
-	vec3 shape2Scale = { 1, 1, 1 };
-	shape2.initialize(shape2Pos, shape2Scale);
-
-	vec3 shape3Pos = { -0.5, 0.5, 0.0 };
-	vec3 shape3Scale = { 1.5, 1.5, 1.5 };
-	shape3.initialize(shape3Pos, shape3Scale);
-
-	//initialize text
-	text.initialize();
 }
