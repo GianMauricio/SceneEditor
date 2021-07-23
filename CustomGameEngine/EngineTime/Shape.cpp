@@ -69,18 +69,18 @@ void Shape::initialize(vec3 position1, vec3 position2, vec3 scale1, vec3 scale2,
 	vertex shape[] =
 	{
 		//X1 - Y1 - Z1, X2 - Y2 - Z2, R1 - G1 - B1, R2 - G2 - B2   
-		{-1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
-		 -1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
-		  color.x, color.y, color.z, color.x, color.y, color.z}, //Upper Left Corner
-		{ 1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
-		  1.0f * scale.x + position.x, 1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
-		  color.x, color.y, color.z, color.x, color.y, color.z}, //Upper Right Corner
-		{-1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
-		 -1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
-		  color.x, color.y, color.z, color.x, color.y, color.z}, //Lower Left Corner
-		{ 1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
-		  1.0f * scale.x + position.x, -1.0f * scale.y + position.y, 1.0f * scale.z + position.z,
-		  color.x, color.y, color.z, color.x, color.y, color.z}, //Lower Right Corner
+		{-1.0f * scale1.x + position1.x, 1.0f * scale1.y + position1.y, 1.0f * scale1.z + position1.z,
+		 -1.0f * scale2.x + position2.x, 1.0f * scale2.y + position2.y, 1.0f * scale2.z + position2.z,
+		  color1.x, color1.y, color1.z, color1.x, color2.y, color2.z}, //Upper Left Corner
+		{ 1.0f * scale1.x + position1.x, 1.0f * scale1.y + position1.y, 1.0f * scale1.z + position1.z,
+		  1.0f * scale2.x + position2.x, 1.0f * scale2.y + position2.y, 1.0f * scale2.z + position2.z,
+		  color1.x, color1.y, color1.z, color2.x, color2.y, color2.z}, //Upper Right Corner
+		{-1.0f * scale1.x + position1.x, -1.0f * scale1.y + position1.y, 1.0f * scale1.z + position1.z,
+		 -1.0f * scale2.x + position2.x, -1.0f * scale2.y + position2.y, 1.0f * scale2.z + position2.z,
+		  color1.x, color1.y, color1.z, color2.x, color2.y, color2.z}, //Lower Left Corner
+		{ 1.0f * scale1.x + position1.x, -1.0f * scale1.y + position1.y, 1.0f * scale1.z + position1.z,
+		  1.0f * scale2.x + position2.x, -1.0f * scale2.y + position2.y, 1.0f * scale2.z + position2.z,
+		  color1.x, color1.y, color1.z, color2.x, color2.y, color2.z}, //Lower Right Corner
 	};
 
 	//Generate shape data
@@ -116,6 +116,11 @@ void Shape::draw()
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setPixelShader(m_ps);
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setVertexBuffer(m_vb);
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->drawTriangleStrip(m_vb->getSizeVertexList(), 0);
+}
+
+void Shape::update(constant cc)
+{
+	m_cb->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 }
 
 void Shape::destroy()

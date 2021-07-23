@@ -38,27 +38,29 @@ void AppWindow::onUpdate()
 
 	//Animation starts here
 	//Time calculations
-	unsigned long new_time = 0;
-
-	if (m_old_time) 
-	{
-		new_time = ::GetTickCount() - m_old_time;
+	if (accelerating) {
+		elapsedTime += EngineTime::getDeltaTime();
 	}
 
-	m_delta_time = new_time / 1000.0f;
-	m_old_time = ::GetTickCount();
+	else {
+		elapsedTime -= EngineTime::getDeltaTime();
+	}
 
-	m_angle += 1.57f*m_delta_time;
+	if (elapsedTime > 10.0f) {
+		accelerating = false;
+	}
+
+	else if(elapsedTime < 0.0f){
+		accelerating = true;
+	}
+
+	m_angle += 1.57f * elapsedTime;
 	constant cc;
 	cc.m_angle = m_angle;
 
-	//Shape 1 draw
-	this->shape1.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
-	this->shape2.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
-	this->shape3.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
+	//Shape update
+	this->shape1.update(cc);
 	shape1.draw();
-	shape2.draw();
-	shape3.draw();
 
 	m_swap_chain->present(true);
 }
@@ -83,9 +85,6 @@ void AppWindow::initializeEngine()
 
 	m_swap_chain->init(this->getWindowHandle(), width, height);
 
-	//initialize shape data
-	//TODO: Shape color
-	vec3 shape1Pos = { 0.5, 0.5, 0.0 };
-	vec3 shape1Scale = { 1, 1, 1 };
-	shape1.initialize(shape1Pos, shape1Scale);
+	//initialize demo shape data
+
 }
