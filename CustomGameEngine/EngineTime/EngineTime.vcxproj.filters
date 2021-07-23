@@ -37,9 +37,6 @@
     <Filter Include="Engine\RenderEngine\VertexShader">
       <UniqueIdentifier>{959ee7fb-d008-4762-bb00-48365df9f1bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\RenderEngine\Time">
-      <UniqueIdentifier>{b1c70572-ff01-4542-85b8-ed23bcea634b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Math">
       <UniqueIdentifier>{340e6f3c-3125-48f1-8b42-58b0ee09718f}</UniqueIdentifier>
     </Filter>
