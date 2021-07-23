@@ -35,7 +35,7 @@ private:
 	Shape shape2;
 	Shape shape3;
 
-	bool accelerating;
+	bool accelerating = true;
 	float elapsedTime = 0;
 	float m_angle = 0;
 };

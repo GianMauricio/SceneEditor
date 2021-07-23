@@ -46,7 +46,7 @@ void AppWindow::onUpdate()
 		elapsedTime -= EngineTime::getDeltaTime();
 	}
 
-	if (elapsedTime > 10.0f) {
+	if (elapsedTime > 7.5f) {
 		accelerating = false;
 	}
 
@@ -54,7 +54,7 @@ void AppWindow::onUpdate()
 		accelerating = true;
 	}
 
-	m_angle += 1.57f * elapsedTime;
+	m_angle += 0.05f * elapsedTime;
 	constant cc;
 	cc.m_angle = m_angle;
 
@@ -76,6 +76,7 @@ void AppWindow::onDestroy()
 void AppWindow::initializeEngine()
 {
 	GraphicsEngine::initialize();
+	EngineTime::initialize();
 	GraphicsEngine* gEngine = GraphicsEngine::getInstance();
 	m_swap_chain = GraphicsEngine::getInstance()->createSwapChain();
 
@@ -86,5 +87,5 @@ void AppWindow::initializeEngine()
 	m_swap_chain->init(this->getWindowHandle(), width, height);
 
 	//initialize demo shape data
-
+	shape1.initializeDemoShape();
 }

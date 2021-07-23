@@ -108,6 +108,64 @@ void Shape::initialize(vec3 position1, vec3 position2, vec3 scale1, vec3 scale2,
 	this->m_cb->load(&cc, sizeof(constant));
 }
 
+void Shape::initializeDemoShape()
+{
+	//Get instance of engine
+	GraphicsEngine* gEngine = GraphicsEngine::getInstance();
+
+	//Is there a way to change this?
+	//VertexData
+	vertex shape[] =
+	{
+		//X1 - Y1 - Z1, 
+		//X2 - Y2 - Z2, 
+		//R1 - G1 - B1, R2 - G2 - B2   
+		{-0.6, 0.4, 0.0,
+		 -0.0, 0.2, 0.0f,
+		  1, 0, 0, 
+		  0, 1, 0}, //Upper Left Corner
+
+		{ 0.0f, 0.2f, 0.0f,
+		  0.6f, 0.4f, 0.0f,
+		  0, 0, 1, 
+		  1, 0, 0}, //Upper Right Corner
+
+		{-0.6f, -0.4f, 0.0f,
+		 -0.0f, -0.2f, 0.0f,
+		  0, 1, 1, 
+		  1, 0, 0}, //Lower Left Corner
+
+		{ 0.0f, -0.2f, 0.0f,
+		  0.6f, -0.4f, 0.0f,
+		  1, 1, 0, 
+		  1, 1, 1}, //Lower Right Corner
+	};
+
+	//Generate shape data
+	void* shader_byte_code = nullptr;
+	size_t size_shader = 0;
+
+	gEngine->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
+	this->m_vs = gEngine->createVertexShader(shader_byte_code, size_shader);
+
+	//Vertex buffers
+	UINT size_list = ARRAYSIZE(shape);
+
+	this->m_vb = gEngine->createVertexBuffer();
+	this->m_vb->load(shape, sizeof(vertex), size_list, shader_byte_code, size_shader);
+
+	gEngine->releaseCompiledShader();
+	gEngine->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
+	this->m_ps = gEngine->createPixelShader(shader_byte_code, size_shader);
+	gEngine->releaseCompiledShader();
+
+	constant cc;
+	cc.m_angle = 0;
+
+	this->m_cb = gEngine->createConstantBuffer();
+	this->m_cb->load(&cc, sizeof(constant));
+}
+
 void Shape::draw()
 {
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setConstantBuffer(m_vs, m_cb);
