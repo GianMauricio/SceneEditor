@@ -11,10 +11,9 @@ public:
 	UINT getSizeIndexList();
 	bool release();
 	~IndexBuffer();
+
 private:
 	UINT m_size_list;
-private:
 	ID3D11Buffer * m_buffer;
-private:
 	friend class DeviceContext;
 };

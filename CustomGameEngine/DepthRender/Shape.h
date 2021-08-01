@@ -17,7 +17,6 @@ struct vertex
 	Vector3D color1;
 };
 
-
 __declspec(align(16))
 struct constant
 {
@@ -34,23 +33,34 @@ public:
 	Shape();
 	~Shape();
 
+	//Core functions
 	void initialize();
 	void draw();
-	void update(constant cc);
+	void update(float windowW, float windowH);
 	void destroy();
+
+	//Get functions
 	VertexBuffer* getVB();
 	ConstantBuffer* getCB();
 	VertexShader* getVS();
 	PixelShader* getPS();
 
+	//Set functions
+	void setPosition(Vector3D newPos);
+	void setScale(Vector3D newScale);
+
 private:
 	VertexBuffer* m_vb;
 	VertexShader* m_vs;
+	IndexBuffer* m_ib;
 	PixelShader* m_ps;
 	ConstantBuffer* m_cb;
 
-	unsigned long m_old_time = 0;
-	float m_delta_time = 0;
-	float m_angle = 0;
+	Vector3D position;
+	Vector3D scale;
+
+	float m_delta_pos;
+	float m_delta_scale;
+	float m_delta_rot;
 };
 

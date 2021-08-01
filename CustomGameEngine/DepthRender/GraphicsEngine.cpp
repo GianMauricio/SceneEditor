@@ -6,6 +6,7 @@
 #include "ConstantBuffer.h"
 #include "VertexShader.h"
 #include "PixelShader.h"
+#include <iostream>
 
 #include <d3dcompiler.h>
 
@@ -152,7 +153,8 @@ PixelShader * GraphicsEngine::createPixelShader(const void * shader_byte_code, s
 
 	if (!ps->init(shader_byte_code, byte_code_size))
 	{
-		//ps->release();
+		//std::cout << "Pixel shader creation failed" << std::endl;
+		ps->release();
 		return nullptr;
 	}
 
