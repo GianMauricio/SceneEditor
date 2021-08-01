@@ -81,6 +81,9 @@
     <ClCompile Include="GraphicsEngine.cpp">
       <Filter>Engine\RenderEngine</Filter>
     </ClCompile>
+    <ClCompile Include="EngineTime.cpp">
+      <Filter>Engine\Time</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -115,6 +118,15 @@
     </ClInclude>
     <ClInclude Include="GraphicsEngine.h">
       <Filter>Engine\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTime.h">
+      <Filter>Engine\Time</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
