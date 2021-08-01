@@ -72,7 +72,6 @@ void AppWindow::updateQuadPosition()
 	if (m_delta_pos > 1.0f)
 		m_delta_pos = 0;
 
-
 	Matrix4x4 temp;
 
 	m_delta_scale += m_delta_time / 0.55f;
@@ -113,16 +112,12 @@ void AppWindow::onDestroy()
 
 void AppWindow::initializeEngine()
 {
-	GraphicsEngine::initialize();
+	GraphicsEngine::getInstance()->initialize();
 	EngineTime::initialize();
-	GraphicsEngine* gEngine = GraphicsEngine::getInstance();
 	m_swap_chain = GraphicsEngine::getInstance()->createSwapChain();
 
 	RECT rc = this->getClientWindowRect();
-	int width = rc.right - rc.left;
-	int height = rc.bottom - rc.top;
-
-	m_swap_chain->init(this->getWindowHandle(), width, height);
+	m_swap_chain->init(this->m_hwnd, rc.right - rc.left, rc.bottom - rc.top);
 
 	vertex vertex_list[] =
 	{
@@ -170,8 +165,8 @@ void AppWindow::initializeEngine()
 
 	m_ib = GraphicsEngine::getInstance()->createIndexBuffer();
 	UINT size_index_list = ARRAYSIZE(index_list);
-	m_ib->load(index_list, size_index_list);
 
+	m_ib->load(index_list, size_index_list);
 	void* shader_byte_code = nullptr;
 	size_t size_shader = 0;
 	GraphicsEngine::getInstance()->compileVertexShader(L"VertexShader.hlsl", "vsmain", &shader_byte_code, &size_shader);
@@ -184,6 +179,7 @@ void AppWindow::initializeEngine()
 
 	GraphicsEngine::getInstance()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
 	m_ps = GraphicsEngine::getInstance()->createPixelShader(shader_byte_code, size_shader);
+
 	GraphicsEngine::getInstance()->releaseCompiledShader();
 
 	constant cc;

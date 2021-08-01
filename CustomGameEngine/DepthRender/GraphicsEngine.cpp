@@ -152,7 +152,7 @@ PixelShader * GraphicsEngine::createPixelShader(const void * shader_byte_code, s
 
 	if (!ps->init(shader_byte_code, byte_code_size))
 	{
-		ps->release();
+		//ps->release();
 		return nullptr;
 	}
 
