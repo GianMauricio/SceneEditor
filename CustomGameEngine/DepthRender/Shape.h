@@ -26,6 +26,7 @@ struct constant
 	unsigned int m_time;
 };
 
+enum Type {CUBE, PLANE, NONE};
 
 class Shape
 {
@@ -34,9 +35,9 @@ public:
 	~Shape();
 
 	//Core functions
-	void initialize();
+	virtual void initialize() = 0;
 	void draw();
-	void update(float windowW, float windowH);
+	virtual void update(float windowW, float windowH) = 0;
 	void destroy();
 
 	//Get functions
@@ -49,7 +50,7 @@ public:
 	void setPosition(Vector3D newPos);
 	void setScale(Vector3D newScale);
 
-private:
+protected:
 	VertexBuffer* m_vb;
 	VertexShader* m_vs;
 	IndexBuffer* m_ib;
@@ -62,5 +63,6 @@ private:
 	float m_delta_pos;
 	float m_delta_scale;
 	float m_delta_rot;
+	Type type = Type::NONE;
 };
 

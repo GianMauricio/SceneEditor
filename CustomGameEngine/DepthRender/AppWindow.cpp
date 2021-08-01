@@ -69,7 +69,7 @@ void AppWindow::initializeEngine()
 	
 	//Initialize all 100 shapes
 	for (int i = 0; i < 100; i++) {
-		Shape* temp = new Shape();
+		Shape* temp = new Cube();
 
 		//Make not null exception
 		temp->initialize();

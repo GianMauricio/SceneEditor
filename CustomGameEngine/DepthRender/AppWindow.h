@@ -4,7 +4,7 @@
 #include <time.h>
 #include <vector>
 
-#include "Shape.h";
+#include "Cube.h";
 #include "IndexBuffer.h"
 #include "EngineTime.h"
 #include "Window.h"

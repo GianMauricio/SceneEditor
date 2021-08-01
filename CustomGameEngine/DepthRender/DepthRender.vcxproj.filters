@@ -90,6 +90,9 @@
     <ClCompile Include="IndexBuffer.cpp">
       <Filter>Engine\RenderEngine\IndexBuffer</Filter>
     </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="IndexBuffer.h">
       <Filter>Engine\RenderEngine\IndexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
