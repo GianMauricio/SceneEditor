@@ -62,4 +62,6 @@ void AppWindow::initializeEngine()
 
 	m_swap_chain->init(this->getWindowHandle(), width, height);
 	shape1.initialize();
+
+	shape1.setScale(Vector3D(0.1, 0.1, 0.1));
 }

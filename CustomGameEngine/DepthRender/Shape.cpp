@@ -125,7 +125,7 @@ void Shape::update(float windowW, float windowH)
 	Matrix4x4 temp;
 	m_delta_scale += EngineTime::getDeltaTime() / 0.55f;
 
-	cc.m_world.setScale(Vector3D(1, 1, 1));
+	cc.m_world.setScale(scale);
 
 	temp.setIdentity();
 	temp.setRotationZ(m_delta_scale);
@@ -188,4 +188,9 @@ PixelShader* Shape::getPS()
 void Shape::setPosition(Vector3D newPos)
 {
 	position = newPos;
+}
+
+void Shape::setScale(Vector3D newScale)
+{
+	scale = newScale;
 }
