@@ -1,4 +1,9 @@
 #pragma once
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <vector>
+
 #include "Shape.h";
 #include "IndexBuffer.h"
 #include "EngineTime.h"
@@ -32,7 +37,7 @@ private:
 	static AppWindow* sharedInstance;
 
 	SwapChain * m_swap_chain;
-	Shape shape1;
+	std::vector<Shape*> shape_list;
 
 	bool accelerating = true;
 	float elapsedTime = 0;

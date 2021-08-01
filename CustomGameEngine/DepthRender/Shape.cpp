@@ -146,10 +146,10 @@ void Shape::update(float windowW, float windowH)
 	cc.m_view.setIdentity();
 	cc.m_proj.setOrthoLH
 	(
-		windowW / 300.0f,
-		windowH / 300.0f,
-		-4.0f,
-		4.0f
+		windowW / 100.0f,
+		windowH / 100.0f,
+		-6.0f,
+		10.0f
 	);
 
 	m_cb->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);

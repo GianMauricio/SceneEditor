@@ -33,12 +33,15 @@ void AppWindow::onUpdate()
 	Window::onUpdate();
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->clearRenderTargetColor(this->m_swap_chain, 0, 0.3f, 0.4f, 1);
 	RECT rc = this->getClientWindowRect();
-	float winH = rc.right - rc.left;
-	float winW = rc.bottom - rc.top;
+	float winH = rc.bottom - rc.top;
+	float winW = rc.right - rc.left; 
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setViewportSize(winW, winH);
 
-	shape1.update(winW, winH);
-	shape1.draw();
+	//Draw and update all shapes
+	for (Shape* curr : shape_list) {
+		curr->update(winW, winH);
+		curr->draw();
+	}
 
 	m_swap_chain->present(true);
 }
@@ -52,6 +55,8 @@ void AppWindow::onDestroy()
 
 void AppWindow::initializeEngine()
 {
+	//make stuff truly random
+	srand(time(NULL));
 	GraphicsEngine::getInstance()->initialize();
 	EngineTime::initialize();
 	m_swap_chain = GraphicsEngine::getInstance()->createSwapChain();
@@ -61,7 +66,29 @@ void AppWindow::initializeEngine()
 	int height = rc.bottom - rc.top;
 
 	m_swap_chain->init(this->getWindowHandle(), width, height);
-	shape1.initialize();
+	
+	//Initialize all 100 shapes
+	for (int i = 0; i < 100; i++) {
+		Shape* temp = new Shape();
 
-	shape1.setScale(Vector3D(0.1, 0.1, 0.1));
+		//Make not null exception
+		temp->initialize();
+
+		//make each shape small so that it doesn't eat the screen
+		temp->setScale(Vector3D(0.5, 0.5, 0.5));
+
+		//add new shape to list
+		shape_list.push_back(temp);
+	}
+
+	//Randomize the position of all shapes
+	for (Shape* curr : shape_list) {
+		//Create 3 random numbers for x, y and z
+		float x = -4.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (8.0)));
+		float y = -3.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (6.0)));
+		float z = -4.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (8.0)));
+
+		Vector3D randPos = Vector3D(x, y, z);
+		curr->setPosition(randPos);
+	}
 }
