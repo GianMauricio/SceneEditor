@@ -43,6 +43,9 @@
     <Filter Include="Engine\Time">
       <UniqueIdentifier>{7f01ec8b-1bdd-41a8-ba55-a239be344402}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\RenderEngine\IndexBuffer">
+      <UniqueIdentifier>{966f8977-0ef3-424a-a0d7-7da9f3dba0c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppWindow.cpp">
@@ -83,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="EngineTime.cpp">
       <Filter>Engine\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Engine\RenderEngine\IndexBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="EngineTime.h">
       <Filter>Engine\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Engine\RenderEngine\IndexBuffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

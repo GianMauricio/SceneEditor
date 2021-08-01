@@ -1,9 +1,9 @@
 #pragma once
 #include <d3d11.h>
-
 class SwapChain;
 class DeviceContext;
 class VertexBuffer;
+class IndexBuffer;
 class ConstantBuffer;
 class VertexShader;
 class PixelShader;
@@ -24,6 +24,7 @@ public:
 	ID3D11DeviceContext* getD11Context();
 	ID3D11Device* getDevice();
 	VertexBuffer* createVertexBuffer();
+	IndexBuffer* createIndexBuffer();
 	ConstantBuffer* createConstantBuffer();
 	VertexShader* createVertexShader(const void* shader_byte_code, size_t byte_code_size);
 	PixelShader* createPixelShader(const void* shader_byte_code, size_t byte_code_size);
@@ -54,6 +55,7 @@ private:
 	ID3D11PixelShader* m_ps = nullptr;
 	friend class SwapChain;
 	friend class VertexBuffer;
+	friend class IndexBuffer;
 	friend class ConstantBuffer;
 	friend class VertexShader;
 	friend class PixelShader;

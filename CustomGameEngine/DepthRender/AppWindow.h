@@ -1,5 +1,6 @@
 #pragma once
 #include "Shape.h";
+#include "IndexBuffer.h"
 #include "EngineTime.h"
 #include "Window.h"
 #include "GraphicsEngine.h"
@@ -22,6 +23,7 @@ public:
 	virtual void onDestroy() override;
 
 	void initializeEngine();
+	void updateQuadPosition();
 	
 private:
 	AppWindow();
@@ -32,11 +34,24 @@ private:
 
 	SwapChain * m_swap_chain;
 	Shape shape1;
-	Shape shape2;
-	Shape shape3;
 
 	bool accelerating = true;
 	float elapsedTime = 0;
 	float m_angle = 0;
+
+	//temp stuff
+	VertexBuffer* m_vb;
+	VertexShader* m_vs;
+	PixelShader* m_ps;
+	ConstantBuffer* m_cb;
+	IndexBuffer* m_ib;
+
+	long m_old_delta;
+	long m_new_delta;
+	float m_delta_time;
+
+	float m_delta_pos;
+	float m_delta_scale;
+	float m_delta_rot;
 };
 

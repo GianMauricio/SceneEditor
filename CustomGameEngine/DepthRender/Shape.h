@@ -1,30 +1,30 @@
 #pragma once
 #include "Window.h"
+#include "Vector3D.h"
+#include "Matrix4x4.h"
 #include "GraphicsEngine.h"
 #include "SwapChain.h"
 #include "DeviceContext.h"
+#include "IndexBuffer.h"
 #include "VertexBuffer.h"
 #include "ConstantBuffer.h"
 #include "VertexShader.h"
 #include "PixelShader.h"
-
-struct vec3
-{
-	float x, y, z;
-};
-
 struct vertex
 {
-	vec3 position;
-	vec3 position1;
-	vec3 color;
-	vec3 color1;
+	Vector3D position;
+	Vector3D color;
+	Vector3D color1;
 };
+
 
 __declspec(align(16))
 struct constant
 {
-	float m_angle;
+	Matrix4x4 m_world;
+	Matrix4x4 m_view;
+	Matrix4x4 m_proj;
+	unsigned int m_time;
 };
 
 
@@ -34,9 +34,7 @@ public:
 	Shape();
 	~Shape();
 
-	void initialize(vec3 position, vec3 scale, vec3 color);
-	void initialize(vec3 position1, vec3 position2, vec3 scale1, vec3 scale2, vec3 color1, vec3 color2);
-	void initializeDemoShape();
+	void initialize();
 	void draw();
 	void update(constant cc);
 	void destroy();
