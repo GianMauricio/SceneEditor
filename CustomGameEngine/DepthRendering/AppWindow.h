@@ -1,7 +1,7 @@
 #pragma once
 #include "Shape.h";
+#include "EngineTime.h"
 #include "Window.h"
-#include "Text.h"
 #include "GraphicsEngine.h"
 #include "SwapChain.h"
 #include "DeviceContext.h"
@@ -35,10 +35,8 @@ private:
 	Shape shape2;
 	Shape shape3;
 
-	Text text;
-
-	unsigned long m_old_time = 0;
-	float m_delta_time = 0;
+	bool accelerating = true;
+	float elapsedTime = 0;
 	float m_angle = 0;
 };
 

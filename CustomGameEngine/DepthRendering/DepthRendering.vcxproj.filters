@@ -37,6 +37,12 @@
     <Filter Include="Engine\RenderEngine\VertexShader">
       <UniqueIdentifier>{022ee8f9-eadb-4640-bc47-14d9de08f99c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Time">
+      <UniqueIdentifier>{e9d56ed1-6604-4b64-9293-21568fdd3550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Math">
+      <UniqueIdentifier>{666fd5a5-3055-4ac0-a7de-bed2c53f7416}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppWindow.cpp">

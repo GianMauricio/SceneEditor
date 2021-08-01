@@ -9,7 +9,6 @@ AppWindow::AppWindow()
 	Window::onCreate();
 }
 
-
 AppWindow::~AppWindow()
 {
 }
@@ -38,29 +37,31 @@ void AppWindow::onUpdate()
 
 	//Animation starts here
 	//Time calculations
-	unsigned long new_time = 0;
-
-	if (m_old_time) 
-	{
-		new_time = ::GetTickCount() - m_old_time;
+	if (accelerating) {
+		elapsedTime += EngineTime::getDeltaTime();
 	}
 
-	m_delta_time = new_time / 1000.0f;
-	m_old_time = ::GetTickCount();
+	else {
+		elapsedTime -= EngineTime::getDeltaTime();
+	}
 
-	m_angle += 1.57f*m_delta_time;
+	if (elapsedTime > 7.5f) {
+		accelerating = false;
+	}
+
+	else if(elapsedTime < 0.0f){
+		accelerating = true;
+	}
+
+	m_angle += 0.05f * elapsedTime;
+
+	//std::cout << m_angle << std::endl;
 	constant cc;
 	cc.m_angle = m_angle;
 
-	//Shape draw
-	this->shape1.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
-	this->shape2.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
-	this->shape3.getCB()->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
+	//Shape update
+	this->shape1.update(cc);
 	shape1.draw();
-	shape2.draw();
-	shape3.draw();
-	text.draw();
-
 
 	m_swap_chain->present(true);
 }
@@ -76,6 +77,7 @@ void AppWindow::onDestroy()
 void AppWindow::initializeEngine()
 {
 	GraphicsEngine::initialize();
+	EngineTime::initialize();
 	GraphicsEngine* gEngine = GraphicsEngine::getInstance();
 	m_swap_chain = GraphicsEngine::getInstance()->createSwapChain();
 
@@ -85,20 +87,6 @@ void AppWindow::initializeEngine()
 
 	m_swap_chain->init(this->getWindowHandle(), width, height);
 
-	//initialize shape data
-	//TODO: Shape color
-	vec3 shape1Pos = { 0.5, 0.5, 0.0 };
-	vec3 shape1Scale = { 1, 1, 1 };
-	shape1.initialize(shape1Pos, shape1Scale);
-
-	vec3 shape2Pos = { -0.5, -0.5, 0.0 };
-	vec3 shape2Scale = { 1, 1, 1 };
-	shape2.initialize(shape2Pos, shape2Scale);
-
-	vec3 shape3Pos = { -0.5, 0.5, 0.0 };
-	vec3 shape3Scale = { 1.5, 1.5, 1.5 };
-	shape3.initialize(shape3Pos, shape3Scale);
-
-	//initialize text
-	text.initialize();
+	//initialize demo shape data
+	shape1.initializeDemoShape();
 }
