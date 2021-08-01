@@ -25,6 +25,7 @@ void AppWindow::initialize()
 
 void AppWindow::onCreate()
 {
+	std::cout << "using this" << std::endl;
 	Window::onCreate();
 }
 

@@ -1,64 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="App">
-      <UniqueIdentifier>{8644d704-f849-4765-878c-d790f0802295}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine">
-      <UniqueIdentifier>{e29820e5-9ed8-4f73-b6d4-5a2ecf2e3e7b}</UniqueIdentifier>
+      <UniqueIdentifier>{3c0b3dcb-b4c4-4d1d-87fb-a56ff172c61b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App">
+      <UniqueIdentifier>{cac2fe30-e214-49f9-a2a5-4d3c47129735}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\RenderEngine">
-      <UniqueIdentifier>{d3c074b0-c4df-4f9c-ad36-0655e7ae369e}</UniqueIdentifier>
+      <UniqueIdentifier>{738bcc40-6d36-49e5-831e-5719d9d68106}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\WindowSystem">
-      <UniqueIdentifier>{af7cc9b1-8620-4802-a4ea-7b63073c7060}</UniqueIdentifier>
+      <UniqueIdentifier>{e7017ed0-08bb-460c-9b5b-f1f3af00e2e6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\RenderEngine\ConstantBuffer">
-      <UniqueIdentifier>{665f7ef4-93a6-4143-af4e-e007f8fe4d4b}</UniqueIdentifier>
+      <UniqueIdentifier>{f8d82749-64cd-4679-9a42-d4092ebd096a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\RenderEngine\DeviceContext">
-      <UniqueIdentifier>{e04aa930-1c95-44bf-a73c-a49935041c72}</UniqueIdentifier>
+      <UniqueIdentifier>{69d5f5a7-5322-45f0-a3a4-d4de41c22b58}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\RenderEngine\PixelShader">
-      <UniqueIdentifier>{2cf28bd7-804c-453b-8390-63bbbf3405b0}</UniqueIdentifier>
+      <UniqueIdentifier>{150110c4-e476-4b81-a3d6-cc0c87741e35}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\RenderEngine\ShapeClasses">
-      <UniqueIdentifier>{6eff6f85-938c-4b51-a689-874877722983}</UniqueIdentifier>
+      <UniqueIdentifier>{63ba56e0-702b-45cd-b038-59b03c8b5ccc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\RenderEngine\SwapChain">
-      <UniqueIdentifier>{6d0cd477-2b6d-4db6-bb70-8179780cb42e}</UniqueIdentifier>
+      <UniqueIdentifier>{d54be5fa-9be8-4ae3-8079-eb9ffeca6261}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\RenderEngine\Text">
-      <UniqueIdentifier>{a32e4236-d470-49d8-b352-25aeb27b1530}</UniqueIdentifier>
+      <UniqueIdentifier>{61a05fb7-cd09-47f3-90d8-bc213cc061f8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\RenderEngine\VertexBuffer">
-      <UniqueIdentifier>{72c1d789-e0c1-400a-9680-eec173e39168}</UniqueIdentifier>
+      <UniqueIdentifier>{98338f0e-8d7b-4282-99d1-3550d2c5652f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\RenderEngine\VertexShader">
-      <UniqueIdentifier>{022ee8f9-eadb-4640-bc47-14d9de08f99c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Time">
-      <UniqueIdentifier>{e9d56ed1-6604-4b64-9293-21568fdd3550}</UniqueIdentifier>
+      <UniqueIdentifier>{959ee7fb-d008-4762-bb00-48365df9f1bf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Math">
-      <UniqueIdentifier>{666fd5a5-3055-4ac0-a7de-bed2c53f7416}</UniqueIdentifier>
+      <UniqueIdentifier>{340e6f3c-3125-48f1-8b42-58b0ee09718f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Time">
+      <UniqueIdentifier>{7f01ec8b-1bdd-41a8-ba55-a239be344402}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppWindow.cpp">
       <Filter>App</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>App</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Engine\WindowSystem</Filter>
-    </ClCompile>
     <ClCompile Include="ConstantBuffer.cpp">
       <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
     </ClCompile>
     <ClCompile Include="DeviceContext.cpp">
       <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine.cpp">
+      <Filter>Engine\RenderEngine</Filter>
     </ClCompile>
     <ClCompile Include="PixelShader.cpp">
       <Filter>Engine\RenderEngine\PixelShader</Filter>
@@ -78,8 +75,11 @@
     <ClCompile Include="VertexShader.cpp">
       <Filter>Engine\RenderEngine\VertexShader</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsEngine.cpp">
-      <Filter>Engine\RenderEngine</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Engine\WindowSystem</Filter>
     </ClCompile>
     <ClCompile Include="EngineTime.cpp">
       <Filter>Engine\Time</Filter>
@@ -89,14 +89,14 @@
     <ClInclude Include="AppWindow.h">
       <Filter>App</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Engine\WindowSystem</Filter>
-    </ClInclude>
     <ClInclude Include="ConstantBuffer.h">
       <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
     </ClInclude>
     <ClInclude Include="DeviceContext.h">
       <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine.h">
+      <Filter>Engine\RenderEngine</Filter>
     </ClInclude>
     <ClInclude Include="PixelShader.h">
       <Filter>Engine\RenderEngine\PixelShader</Filter>
@@ -116,8 +116,8 @@
     <ClInclude Include="VertexShader.h">
       <Filter>Engine\RenderEngine\VertexShader</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsEngine.h">
-      <Filter>Engine\RenderEngine</Filter>
+    <ClInclude Include="Window.h">
+      <Filter>Engine\WindowSystem</Filter>
     </ClInclude>
     <ClInclude Include="Matrix4x4.h">
       <Filter>Engine\Math</Filter>
@@ -130,10 +130,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="PixelShader.hlsl">
+    <FxCompile Include="VertexShader.hlsl">
       <Filter>App</Filter>
     </FxCompile>
-    <FxCompile Include="VertexShader.hlsl">
+    <FxCompile Include="PixelShader.hlsl">
       <Filter>App</Filter>
     </FxCompile>
   </ItemGroup>

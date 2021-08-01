@@ -18,55 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AppWindow.cpp" />
-    <ClCompile Include="ConstantBuffer.cpp" />
-    <ClCompile Include="DeviceContext.cpp" />
-    <ClCompile Include="EngineTime.cpp" />
-    <ClCompile Include="GraphicsEngine.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="PixelShader.cpp" />
-    <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="SwapChain.cpp" />
-    <ClCompile Include="Text.cpp" />
-    <ClCompile Include="VertexBuffer.cpp" />
-    <ClCompile Include="VertexShader.cpp" />
-    <ClCompile Include="Window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="AppWindow.h" />
-    <ClInclude Include="ConstantBuffer.h" />
-    <ClInclude Include="DeviceContext.h" />
-    <ClInclude Include="EngineTime.h" />
-    <ClInclude Include="GraphicsEngine.h" />
-    <ClInclude Include="Matrix4x4.h" />
-    <ClInclude Include="PixelShader.h" />
-    <ClInclude Include="Shape.h" />
-    <ClInclude Include="SwapChain.h" />
-    <ClInclude Include="Text.h" />
-    <ClInclude Include="Vector3D.h" />
-    <ClInclude Include="VertexBuffer.h" />
-    <ClInclude Include="VertexShader.h" />
-    <ClInclude Include="Window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="PixelShader.hlsl">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </FxCompile>
-    <FxCompile Include="VertexShader.hlsl">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\DirectXTK11\DirectXTK_Desktop_2017_Win10.vcxproj">
-      <Project>{e0b52ae7-e160-4d32-bf3f-910b785e5a8e}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{788a2c62-a071-4202-922f-f327f8f92c1f}</ProjectGuid>
-    <RootNamespace>DepthRendering</RootNamespace>
+    <ProjectGuid>{F16B9C94-F069-48E5-B296-63997F0F0E45}</ProjectGuid>
+    <RootNamespace>EngineTime</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -184,6 +140,50 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DirectXTK11\DirectXTK_Desktop_2017_Win10.vcxproj">
+      <Project>{e0b52ae7-e160-4d32-bf3f-910b785e5a8e}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppWindow.cpp" />
+    <ClCompile Include="ConstantBuffer.cpp" />
+    <ClCompile Include="DeviceContext.cpp" />
+    <ClCompile Include="EngineTime.cpp" />
+    <ClCompile Include="GraphicsEngine.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PixelShader.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="SwapChain.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="VertexBuffer.cpp" />
+    <ClCompile Include="VertexShader.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppWindow.h" />
+    <ClInclude Include="ConstantBuffer.h" />
+    <ClInclude Include="DeviceContext.h" />
+    <ClInclude Include="EngineTime.h" />
+    <ClInclude Include="GraphicsEngine.h" />
+    <ClInclude Include="Matrix4x4.h" />
+    <ClInclude Include="PixelShader.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="SwapChain.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Vector3D.h" />
+    <ClInclude Include="VertexBuffer.h" />
+    <ClInclude Include="VertexShader.h" />
+    <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="PixelShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="VertexShader.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
