@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{8644d704-f849-4765-878c-d790f0802295}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{e29820e5-9ed8-4f73-b6d4-5a2ecf2e3e7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine">
+      <UniqueIdentifier>{d3c074b0-c4df-4f9c-ad36-0655e7ae369e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\WindowSystem">
+      <UniqueIdentifier>{af7cc9b1-8620-4802-a4ea-7b63073c7060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ConstantBuffer">
+      <UniqueIdentifier>{665f7ef4-93a6-4143-af4e-e007f8fe4d4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\DeviceContext">
+      <UniqueIdentifier>{e04aa930-1c95-44bf-a73c-a49935041c72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\PixelShader">
+      <UniqueIdentifier>{2cf28bd7-804c-453b-8390-63bbbf3405b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses">
+      <UniqueIdentifier>{6eff6f85-938c-4b51-a689-874877722983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\SwapChain">
+      <UniqueIdentifier>{6d0cd477-2b6d-4db6-bb70-8179780cb42e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\Text">
+      <UniqueIdentifier>{a32e4236-d470-49d8-b352-25aeb27b1530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\VertexBuffer">
+      <UniqueIdentifier>{72c1d789-e0c1-400a-9680-eec173e39168}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\VertexShader">
+      <UniqueIdentifier>{022ee8f9-eadb-4640-bc47-14d9de08f99c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppWindow.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Engine\WindowSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantBuffer.cpp">
+      <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceContext.cpp">
+      <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Engine\RenderEngine\PixelShader</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapChain.cpp">
+      <Filter>Engine\RenderEngine\SwapChain</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Engine\RenderEngine\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Engine\RenderEngine\VertexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Engine\RenderEngine\VertexShader</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine.cpp">
+      <Filter>Engine\RenderEngine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppWindow.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Engine\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceContext.h">
+      <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Engine\RenderEngine\PixelShader</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapChain.h">
+      <Filter>Engine\RenderEngine\SwapChain</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Engine\RenderEngine\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Engine\RenderEngine\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Engine\RenderEngine\VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine.h">
+      <Filter>Engine\RenderEngine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
