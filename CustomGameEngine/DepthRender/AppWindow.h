@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Cube.h";
+#include "Plane3D.h"
 #include "IndexBuffer.h"
 #include "EngineTime.h"
 #include "Window.h"
@@ -38,6 +39,8 @@ private:
 
 	SwapChain * m_swap_chain;
 	std::vector<Shape*> shape_list;
+
+	Shape* plane;
 
 	bool accelerating = true;
 	float elapsedTime = 0;

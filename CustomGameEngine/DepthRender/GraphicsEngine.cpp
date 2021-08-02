@@ -118,6 +118,11 @@ ID3D11Device* GraphicsEngine::getDevice()
 	return m_d3d_device;
 }
 
+IDXGIFactory* GraphicsEngine::getDirectXFactory()
+{
+	return m_dxgi_factory;
+}
+
 VertexBuffer * GraphicsEngine::createVertexBuffer()
 {
 	return new VertexBuffer();

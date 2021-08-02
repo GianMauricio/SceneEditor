@@ -46,6 +46,12 @@
     <Filter Include="Engine\RenderEngine\IndexBuffer">
       <UniqueIdentifier>{966f8977-0ef3-424a-a0d7-7da9f3dba0c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses\Cube">
+      <UniqueIdentifier>{5f0a755e-8771-47f5-a2e3-ade5cbd6afc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses\Plane">
+      <UniqueIdentifier>{233ee59e-3a02-4509-8a42-1f2c1373303a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppWindow.cpp">
@@ -91,7 +97,10 @@
       <Filter>Engine\RenderEngine\IndexBuffer</Filter>
     </ClCompile>
     <ClCompile Include="Cube.cpp">
-      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+      <Filter>Engine\RenderEngine\ShapeClasses\Cube</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane3D.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses\Plane</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,7 +150,10 @@
       <Filter>Engine\RenderEngine\IndexBuffer</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
-      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+      <Filter>Engine\RenderEngine\ShapeClasses\Cube</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane3D.h">
+      <Filter>Engine\RenderEngine\ShapeClasses\Plane</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

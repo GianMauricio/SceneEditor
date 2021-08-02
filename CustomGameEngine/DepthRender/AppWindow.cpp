@@ -37,11 +37,15 @@ void AppWindow::onUpdate()
 	float winW = rc.right - rc.left; 
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setViewportSize(winW, winH);
 
+	plane->update(winW, winH);
+	plane->draw();
+
 	//Draw and update all shapes
 	for (Shape* curr : shape_list) {
 		curr->update(winW, winH);
 		curr->draw();
 	}
+
 
 	m_swap_chain->present(true);
 }
@@ -67,15 +71,15 @@ void AppWindow::initializeEngine()
 
 	m_swap_chain->init(this->getWindowHandle(), width, height);
 	
-	//Initialize all 100 shapes
-	for (int i = 0; i < 100; i++) {
+	//Initialize cube shapes
+	for (int i = 0; i < 1; i++) {
 		Shape* temp = new Cube();
 
 		//Make not null exception
 		temp->initialize();
 
 		//make each shape small so that it doesn't eat the screen
-		temp->setScale(Vector3D(0.5, 0.5, 0.5));
+		temp->setScale(Vector3D(1.2, 1.2, 1.2));
 
 		//add new shape to list
 		shape_list.push_back(temp);
@@ -89,6 +93,14 @@ void AppWindow::initializeEngine()
 		float z = -4.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (8.0)));
 
 		Vector3D randPos = Vector3D(x, y, z);
-		curr->setPosition(randPos);
+
+
+		curr->setPosition(Vector3D(0.2, 0.2, 0));
 	}
+
+	//Make plane
+	plane = new Plane3D();
+	plane->initialize();
+	plane->setPosition(Vector3D(0.2, 0.0, 0));
+	plane->setScale(Vector3D(5, 0.01, 5));
 }

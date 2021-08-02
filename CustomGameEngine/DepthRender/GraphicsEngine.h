@@ -23,6 +23,7 @@ public:
 	DeviceContext* getImmediateDeviceContext();
 	ID3D11DeviceContext* getD11Context();
 	ID3D11Device* getDevice();
+	IDXGIFactory* getDirectXFactory();
 	VertexBuffer* createVertexBuffer();
 	IndexBuffer* createIndexBuffer();
 	ConstantBuffer* createConstantBuffer();
