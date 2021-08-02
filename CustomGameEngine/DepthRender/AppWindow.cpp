@@ -46,7 +46,6 @@ void AppWindow::onUpdate()
 		curr->draw();
 	}
 
-
 	m_swap_chain->present(true);
 }
 
@@ -72,14 +71,14 @@ void AppWindow::initializeEngine()
 	m_swap_chain->init(this->getWindowHandle(), width, height);
 	
 	//Initialize cube shapes
-	for (int i = 0; i < 1; i++) {
+	for (int i = 0; i < 100; i++) {
 		Shape* temp = new Cube();
 
 		//Make not null exception
 		temp->initialize();
 
 		//make each shape small so that it doesn't eat the screen
-		temp->setScale(Vector3D(1.2, 1.2, 1.2));
+		temp->setScale(Vector3D(0.2, 0.2, 0.2));
 
 		//add new shape to list
 		shape_list.push_back(temp);
@@ -95,7 +94,7 @@ void AppWindow::initializeEngine()
 		Vector3D randPos = Vector3D(x, y, z);
 
 
-		curr->setPosition(Vector3D(0.2, 0.2, 0));
+		curr->setPosition(randPos);
 	}
 
 	//Make plane
