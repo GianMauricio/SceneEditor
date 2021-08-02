@@ -95,30 +95,30 @@ void AppWindow::initializeEngine()
 	}
 	*/
 
+	//Make plane
+	plane = new Plane3D();
+	plane->initialize();
+	plane->setPosition(Vector3D(0.0, -1.0, 0.0));
+	plane->setScale(Vector3D(7, 0.01, 7));
+	shape_list.push_back(plane);
+
 	Cube* newCube1 = new Cube();
 	newCube1->initialize();
 	newCube1->setScale(Vector3D(0.75, 0.75, 0.75));
-	newCube1->setPosition(Vector3D(0, 0.9, 0.0));
+	newCube1->setPosition(Vector3D(-1.0, 0.9, 0.0));
 	shape_list.push_back(newCube1);
 
 	Cube* newCube2 = new Cube();
 	newCube2->initialize();
 	newCube2->setScale(Vector3D(0.75, 0.75, 0.75));
-	newCube2->setPosition(Vector3D(-1.5, 2.0, 0.0));
+	newCube2->setPosition(Vector3D(-2.5, 2.0, 0.0));
 	shape_list.push_back(newCube2);
 
 	Cube* newCube3 = new Cube();
 	newCube3->initialize();
 	newCube3->setScale(Vector3D(0.75, 0.75, 0.75));
-	newCube3->setPosition(Vector3D(-1.5, 3.0, -2.0));
+	newCube3->setPosition(Vector3D(-2.5, 3.0, -4.0));
 	shape_list.push_back(newCube3);
-
-	//Make plane
-	plane = new Plane3D();
-	plane->initialize();
-	plane->setPosition(Vector3D(0.0, -1.0, 4));
-	plane->setScale(Vector3D(8, 0.01, 8));
-	shape_list.push_back(plane);
 
 	//pyramid = new Pyramid();
 	//pyramid->initialize();

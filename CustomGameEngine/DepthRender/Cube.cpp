@@ -41,7 +41,7 @@ void Cube::update(float windowW, float windowH)
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	temp.setRotationY(0.25);
+	temp.setRotationY(0.45);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
@@ -58,7 +58,7 @@ void Cube::update(float windowW, float windowH)
 		temp.setRotationX(1.5);
 	}
 	*/
-	//temp.setRotationX(0.25);
+	temp.setRotationX(-0.25);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
@@ -66,6 +66,7 @@ void Cube::update(float windowW, float windowH)
 	cc.m_world *= temp;
 
 	cc.m_view.setIdentity();
+	
 	
 	cc.m_proj.setOrthoLH
 	(
@@ -75,8 +76,7 @@ void Cube::update(float windowW, float windowH)
 		10.0f
 	);
 	
-
-	//cc.m_proj.setPerspectiveFovLH(2.0, ((float)windowW / (float)windowH), 0.1f, 100.0f);
+	//cc.m_proj.setPerspectiveFovLH(1.57, ((float)windowW / (float)windowH), 0.1f, 100.0f);
 
 	m_cb->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 }
