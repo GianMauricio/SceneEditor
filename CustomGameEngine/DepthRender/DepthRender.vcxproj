@@ -156,6 +156,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PixelShader.cpp" />
     <ClCompile Include="Plane3D.cpp" />
+    <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="SwapChain.cpp" />
     <ClCompile Include="Text.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Matrix4x4.h" />
     <ClInclude Include="PixelShader.h" />
     <ClInclude Include="Plane3D.h" />
+    <ClInclude Include="Pyramid.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SwapChain.h" />
     <ClInclude Include="Text.h" />

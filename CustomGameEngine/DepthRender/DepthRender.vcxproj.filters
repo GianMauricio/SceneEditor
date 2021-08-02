@@ -52,6 +52,9 @@
     <Filter Include="Engine\RenderEngine\ShapeClasses\Plane">
       <UniqueIdentifier>{233ee59e-3a02-4509-8a42-1f2c1373303a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses\Pyramid">
+      <UniqueIdentifier>{9625c4a2-478c-4373-b18c-adfb6a9e544f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppWindow.cpp">
@@ -101,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="Plane3D.cpp">
       <Filter>Engine\RenderEngine\ShapeClasses\Plane</Filter>
+    </ClCompile>
+    <ClCompile Include="Pyramid.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses\Pyramid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="Plane3D.h">
       <Filter>Engine\RenderEngine\ShapeClasses\Plane</Filter>
+    </ClInclude>
+    <ClInclude Include="Pyramid.h">
+      <Filter>Engine\RenderEngine\ShapeClasses\Pyramid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

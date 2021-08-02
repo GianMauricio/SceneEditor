@@ -26,7 +26,7 @@ struct constant
 	unsigned int m_time;
 };
 
-enum Type {CUBE, PLANE, NONE};
+enum Type {CUBE, PLANE, PYRAMID, NONE};
 
 class Shape
 {

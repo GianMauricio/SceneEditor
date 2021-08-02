@@ -1,61 +1,58 @@
-#include "Plane3D.h"
+#include "Pyramid.h"
 
-Plane3D::Plane3D()
+Pyramid::Pyramid()
 {
-	type = Type::PLANE;
+	type = Type::PYRAMID;
 }
 
-Plane3D::~Plane3D()
+Pyramid::~Pyramid()
 {
 }
 
-void Plane3D::initialize()
+void Pyramid::initialize()
 {
 	//Get instance of engine
 	GraphicsEngine* gEngine = GraphicsEngine::getInstance();
 
-	//Establish plane vertices (contains color data)
+	//Establish Pyramid vertices (contains color data)
 	vertex vertex_list[] =
 	{
 		//X - Y - Z
-		//FRONT FACE
-		{Vector3D(-0.5f,-0.5f,-0.5f),    Vector3D(1, 1, 1),  Vector3D(1, 1, 1)},
-		{Vector3D(-0.5f,0.5f,-0.5f),    Vector3D(1, 1, 1), Vector3D(1, 1, 1)},
-		{Vector3D(0.5f,0.5f,-0.5f),   Vector3D(1, 1, 1),  Vector3D(1, 1, 1)},
-		{Vector3D(0.5f,-0.5f,-0.5f),     Vector3D(1, 1, 1), Vector3D(1, 1, 1)},
+		//APEX
+		{Vector3D(0.0f, 1, 0.0f),    Vector3D(1,0,0),  Vector3D(0.2f,0,0) }, //0
 
-		//BACK FACE
-		{Vector3D(0.5f,-0.5f,0.5f),    Vector3D(1, 1, 1), Vector3D(1, 1, 1)},
-		{Vector3D(0.5f,0.5f,0.5f),    Vector3D(1, 1, 1), Vector3D(1, 1, 1)},
-		{Vector3D(-0.5f,0.5f,0.5f),   Vector3D(1, 1, 1),  Vector3D(1, 1, 1)},
-		{Vector3D(-0.5f,-0.5f,0.5f),     Vector3D(1, 1, 1), Vector3D(1, 1, 1)}
+		//BASE
+		{Vector3D(-0.5f, 0, 0.5f),    Vector3D(0,1,0), Vector3D(0,0.2f,0) }, //1
+		{Vector3D(-0.5f, 0, -0.5f),    Vector3D(0,1,1), Vector3D(0,0.2f,0.2f) }, //2
+		{Vector3D(0.5f, 0, -0.5f),   Vector3D(0,1,1),  Vector3D(0,0.2f,0.2f) }, //3
+		{Vector3D(0.5f, -0, 0.5f),     Vector3D(0,1,0), Vector3D(0,0.2f,0) } //4
+
 	};
 
 	//Load vertex data
 	m_vb = GraphicsEngine::getInstance()->createVertexBuffer();
 	UINT size_list = ARRAYSIZE(vertex_list);
 
-	//Establish plane indices
+	//Establish cube indices
 	unsigned int index_list[] =
 	{
 		//FRONT SIDE
-		0,1,2,  //FIRST TRIANGLE
-		2,3,0,  //SECOND TRIANGLE
-		//BACK SIDE
-		4,5,6,
-		6,7,4,
-		//TOP SIDE
-		1,6,5,
-		5,2,1,
-		//BOTTOM SIDE
-		7,0,3,
-		3,4,7,
-		//RIGHT SIDE
-		3,2,5,
-		5,4,3,
+		2, 0, 3,
+
 		//LEFT SIDE
-		7,6,1,
-		1,0,7
+		1, 0, 2,
+
+		//BACK SIDE
+		4, 0, 1,
+
+		//RIGHT SIDE
+		3, 0, 4,
+
+		//BASE1
+		1, 2, 3,
+
+		//BASE2
+		3, 4, 1
 	};
 
 	//Load index data
@@ -74,7 +71,6 @@ void Plane3D::initialize()
 
 	GraphicsEngine::getInstance()->releaseCompiledShader();
 
-
 	GraphicsEngine::getInstance()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
 	m_ps = GraphicsEngine::getInstance()->createPixelShader(shader_byte_code, size_shader);
 	GraphicsEngine::getInstance()->releaseCompiledShader();
@@ -88,11 +84,10 @@ void Plane3D::initialize()
 	position = Vector3D(0.0f, 0.0f, 0.0f);
 
 	//Set own scale to unit size
-	//Scale down to make plane
-	scale = Vector3D(1.0f, 0.01f, 1.0f);
+	scale = Vector3D(1.0f, 1.0f, 1.0f);
 }
 
-void Plane3D::update(float windowW, float windowH)
+void Pyramid::update(float winW, float winH)
 {
 	//Update time value
 	constant cc;
@@ -110,15 +105,15 @@ void Plane3D::update(float windowW, float windowH)
 	cc.m_world.setScale(scale);
 
 	temp.setIdentity();
-	//temp.setRotationZ(0);
+	temp.setRotationZ(m_delta_scale);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	temp.setRotationY(0.4);
+	temp.setRotationY(m_delta_scale);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	temp.setRotationX(0.3);
+	temp.setRotationX(m_delta_scale);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
@@ -128,8 +123,8 @@ void Plane3D::update(float windowW, float windowH)
 	cc.m_view.setIdentity();
 	cc.m_proj.setOrthoLH
 	(
-		windowW / 100.0f,
-		windowH / 100.0f,
+		winW / 100.0f,
+		winH / 100.0f,
 		-6.0f,
 		10.0f
 	);

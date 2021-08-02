@@ -16,26 +16,49 @@ void Cube::update(float windowW, float windowH)
 	cc.m_time = EngineTime::getDeltaTime();
 
 	//Calculate new position values
-	m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
-	if (m_delta_pos > 1.0f)
-		m_delta_pos = 0;
+	m_delta_pos += EngineTime::getDeltaTime();
 
 	//Create transform matrix
 	Matrix4x4 temp;
-	m_delta_scale += EngineTime::getDeltaTime() / 0.55f;
+	m_delta_scale += EngineTime::getDeltaTime() / 2.0f;
+
+	/*
+	if (expanding) {
+		scale.m_x += m_delta_scale;
+		scale.m_y += m_delta_scale;
+		scale.m_z -= m_delta_scale;
+	}
+
+	if (scale.m_x >= 2.75f) {
+		expanding = false;
+	}
+	*/
 
 	cc.m_world.setScale(scale);
 
 	temp.setIdentity();
-	temp.setRotationZ(m_delta_scale);
+	//temp.setRotationZ(0.25);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	temp.setRotationY(m_delta_scale);
+	temp.setRotationY(0.25);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	temp.setRotationX(m_delta_scale);
+	/*
+	if (m_delta_scale >= 1.5) {
+		rotating = false;
+	}
+
+	if (rotating) {
+		temp.setRotationX(m_delta_scale);
+	}
+
+	else {
+		temp.setRotationX(1.5);
+	}
+	*/
+	//temp.setRotationX(0.25);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
@@ -43,6 +66,7 @@ void Cube::update(float windowW, float windowH)
 	cc.m_world *= temp;
 
 	cc.m_view.setIdentity();
+	
 	cc.m_proj.setOrthoLH
 	(
 		windowW / 100.0f,
@@ -50,6 +74,9 @@ void Cube::update(float windowW, float windowH)
 		-6.0f,
 		10.0f
 	);
+	
+
+	//cc.m_proj.setPerspectiveFovLH(2.0, ((float)windowW / (float)windowH), 0.1f, 100.0f);
 
 	m_cb->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 }

@@ -37,9 +37,6 @@ void AppWindow::onUpdate()
 	float winW = rc.right - rc.left; 
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setViewportSize(winW, winH);
 
-	plane->update(winW, winH);
-	plane->draw();
-
 	//Draw and update all shapes
 	for (Shape* curr : shape_list) {
 		curr->update(winW, winH);
@@ -70,15 +67,16 @@ void AppWindow::initializeEngine()
 
 	m_swap_chain->init(this->getWindowHandle(), width, height);
 	
+	/*
 	//Initialize cube shapes
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 50; i++) {
 		Shape* temp = new Cube();
 
 		//Make not null exception
 		temp->initialize();
 
 		//make each shape small so that it doesn't eat the screen
-		temp->setScale(Vector3D(0.2, 0.2, 0.2));
+		temp->setScale(Vector3D(1.5, 1.5, 1.5));
 
 		//add new shape to list
 		shape_list.push_back(temp);
@@ -93,13 +91,37 @@ void AppWindow::initializeEngine()
 
 		Vector3D randPos = Vector3D(x, y, z);
 
-
-		curr->setPosition(randPos);
+		curr->setPosition(Vector3D(0, -1, 0));
 	}
+	*/
+
+	Cube* newCube1 = new Cube();
+	newCube1->initialize();
+	newCube1->setScale(Vector3D(0.75, 0.75, 0.75));
+	newCube1->setPosition(Vector3D(0, 0.9, 0.0));
+	shape_list.push_back(newCube1);
+
+	Cube* newCube2 = new Cube();
+	newCube2->initialize();
+	newCube2->setScale(Vector3D(0.75, 0.75, 0.75));
+	newCube2->setPosition(Vector3D(-1.5, 2.0, 0.0));
+	shape_list.push_back(newCube2);
+
+	Cube* newCube3 = new Cube();
+	newCube3->initialize();
+	newCube3->setScale(Vector3D(0.75, 0.75, 0.75));
+	newCube3->setPosition(Vector3D(-1.5, 3.0, -2.0));
+	shape_list.push_back(newCube3);
 
 	//Make plane
 	plane = new Plane3D();
 	plane->initialize();
-	plane->setPosition(Vector3D(0.2, 0.0, 0));
-	plane->setScale(Vector3D(5, 0.01, 5));
+	plane->setPosition(Vector3D(0.0, -1.0, 4));
+	plane->setScale(Vector3D(8, 0.01, 8));
+	shape_list.push_back(plane);
+
+	//pyramid = new Pyramid();
+	//pyramid->initialize();
+	//pyramid->setPosition(Vector3D(2.0, 0, 0));
+	//shape_list.push_back(pyramid);
 }

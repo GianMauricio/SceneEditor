@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Cube.h";
+#include "Pyramid.h"
 #include "Plane3D.h"
 #include "IndexBuffer.h"
 #include "EngineTime.h"
@@ -41,6 +42,7 @@ private:
 	std::vector<Shape*> shape_list;
 
 	Shape* plane;
+	Shape* pyramid;
 
 	bool accelerating = true;
 	float elapsedTime = 0;
