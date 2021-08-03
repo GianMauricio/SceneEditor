@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppWindow.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Engine\WindowSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine.cpp">
+      <Filter>Engine\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantBuffer.cpp">
+      <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceContext.cpp">
+      <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Engine\RenderEngine\PixelShader</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapChain.cpp">
+      <Filter>Engine\RenderEngine\SwapChain</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Engine\RenderEngine\VertexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Engine\RenderEngine\VertexShader</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Engine\RenderEngine\Text</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppWindow.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Engine\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine.h">
+      <Filter>Engine\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceContext.h">
+      <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Engine\RenderEngine\PixelShader</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapChain.h">
+      <Filter>Engine\RenderEngine\SwapChain</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Engine\RenderEngine\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Engine\RenderEngine\VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Engine\RenderEngine\Text</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{dd1c4d5a-2e8a-4454-9dff-7feab940912b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{1a607f5b-257b-4a37-ba7f-3e5856d97b9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine">
+      <UniqueIdentifier>{76cb9a65-4fa9-4d96-a4f3-88dd4848d950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\WindowSystem">
+      <UniqueIdentifier>{e7615f8f-6e30-468e-9e76-bbca65d212d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ConstantBuffer">
+      <UniqueIdentifier>{39bfc362-de50-4e30-8003-19a15438065c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\DeviceContext">
+      <UniqueIdentifier>{1c0b1266-ef55-48cf-a6b6-a2dbde4a7a42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\PixelShader">
+      <UniqueIdentifier>{64abc503-2ceb-4707-a367-23639611c5b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\SwapChain">
+      <UniqueIdentifier>{c87dce83-b047-4e88-8c71-a1b72a83ab59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\VertexBuffer">
+      <UniqueIdentifier>{498f41d6-f883-4bf0-881a-43bb7b75a5f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\VertexShader">
+      <UniqueIdentifier>{2fb67222-fbf6-4c13-ad49-453ef31820bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses">
+      <UniqueIdentifier>{7441fac3-c8e1-4f55-af80-0d9448d0a696}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\Text">
+      <UniqueIdentifier>{fdae76cd-a056-40d7-8a4a-12aff55089e8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

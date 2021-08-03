@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{d6c1747a-9e5a-443d-9c79-2804886e20f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{d652897f-01aa-4757-b451-857c14ed7a80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\WindowSystem">
+      <UniqueIdentifier>{20183d4f-f5ea-42d8-a6e3-3c7d926ccd35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine">
+      <UniqueIdentifier>{f509d72f-8e92-4fde-9414-3cfcd5285b72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\DeviceContext">
+      <UniqueIdentifier>{912100f7-f826-4b74-b315-d93c0de28d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\PixelShader">
+      <UniqueIdentifier>{c983e93a-65bb-4082-ad8f-24551723580f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\VertexShader">
+      <UniqueIdentifier>{ecb56e44-0de4-4046-8e3b-50a0298a8de8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\VertexBuffer">
+      <UniqueIdentifier>{9050b44b-2f84-4ecc-a3d8-7bf66b28db7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\SwapChain">
+      <UniqueIdentifier>{21cdb64a-0f59-4c4f-9b7b-6025c8c8f5d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ConstantBuffer">
+      <UniqueIdentifier>{86113bff-650c-4a0e-9a0e-beb595aaecd5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GraphicsEngine.cpp">
+      <Filter>Engine\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceContext.cpp">
+      <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapChain.cpp">
+      <Filter>Engine\RenderEngine\SwapChain</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Engine\RenderEngine\VertexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Engine\RenderEngine\VertexShader</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Engine\RenderEngine\PixelShader</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Engine\WindowSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="AppWindow.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantBuffer.cpp">
+      <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GraphicsEngine.h">
+      <Filter>Engine\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceContext.h">
+      <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapChain.h">
+      <Filter>Engine\RenderEngine\SwapChain</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Engine\RenderEngine\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Engine\RenderEngine\VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Engine\RenderEngine\PixelShader</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Engine\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="AppWindow.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

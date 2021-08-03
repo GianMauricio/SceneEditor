@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{3c0b3dcb-b4c4-4d1d-87fb-a56ff172c61b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="App">
+      <UniqueIdentifier>{cac2fe30-e214-49f9-a2a5-4d3c47129735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine">
+      <UniqueIdentifier>{738bcc40-6d36-49e5-831e-5719d9d68106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\WindowSystem">
+      <UniqueIdentifier>{e7017ed0-08bb-460c-9b5b-f1f3af00e2e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ConstantBuffer">
+      <UniqueIdentifier>{f8d82749-64cd-4679-9a42-d4092ebd096a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\DeviceContext">
+      <UniqueIdentifier>{69d5f5a7-5322-45f0-a3a4-d4de41c22b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\PixelShader">
+      <UniqueIdentifier>{150110c4-e476-4b81-a3d6-cc0c87741e35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses">
+      <UniqueIdentifier>{63ba56e0-702b-45cd-b038-59b03c8b5ccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\SwapChain">
+      <UniqueIdentifier>{d54be5fa-9be8-4ae3-8079-eb9ffeca6261}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\Text">
+      <UniqueIdentifier>{61a05fb7-cd09-47f3-90d8-bc213cc061f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\VertexBuffer">
+      <UniqueIdentifier>{98338f0e-8d7b-4282-99d1-3550d2c5652f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\VertexShader">
+      <UniqueIdentifier>{959ee7fb-d008-4762-bb00-48365df9f1bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Math">
+      <UniqueIdentifier>{340e6f3c-3125-48f1-8b42-58b0ee09718f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Time">
+      <UniqueIdentifier>{7f01ec8b-1bdd-41a8-ba55-a239be344402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\IndexBuffer">
+      <UniqueIdentifier>{966f8977-0ef3-424a-a0d7-7da9f3dba0c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses\Cube">
+      <UniqueIdentifier>{5f0a755e-8771-47f5-a2e3-ade5cbd6afc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses\Plane">
+      <UniqueIdentifier>{233ee59e-3a02-4509-8a42-1f2c1373303a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderEngine\ShapeClasses\Pyramid">
+      <UniqueIdentifier>{9625c4a2-478c-4373-b18c-adfb6a9e544f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppWindow.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantBuffer.cpp">
+      <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceContext.cpp">
+      <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine.cpp">
+      <Filter>Engine\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Engine\RenderEngine\PixelShader</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapChain.cpp">
+      <Filter>Engine\RenderEngine\SwapChain</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Engine\RenderEngine\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Engine\RenderEngine\VertexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Engine\RenderEngine\VertexShader</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Engine\WindowSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTime.cpp">
+      <Filter>Engine\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Engine\RenderEngine\IndexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses\Cube</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane3D.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses\Plane</Filter>
+    </ClCompile>
+    <ClCompile Include="Pyramid.cpp">
+      <Filter>Engine\RenderEngine\ShapeClasses\Pyramid</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppWindow.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>Engine\RenderEngine\ConstantBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceContext.h">
+      <Filter>Engine\RenderEngine\DeviceContext</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine.h">
+      <Filter>Engine\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Engine\RenderEngine\PixelShader</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Engine\RenderEngine\ShapeClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapChain.h">
+      <Filter>Engine\RenderEngine\SwapChain</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Engine\RenderEngine\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Engine\RenderEngine\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Engine\RenderEngine\VertexShader</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Engine\WindowSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTime.h">
+      <Filter>Engine\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Engine\RenderEngine\IndexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Engine\RenderEngine\ShapeClasses\Cube</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane3D.h">
+      <Filter>Engine\RenderEngine\ShapeClasses\Plane</Filter>
+    </ClInclude>
+    <ClInclude Include="Pyramid.h">
+      <Filter>Engine\RenderEngine\ShapeClasses\Pyramid</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>App</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
