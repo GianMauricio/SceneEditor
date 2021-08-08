@@ -29,13 +29,12 @@ VS_OUTPUT vsmain(VS_INPUT input)
 
 	//	output.position = lerp(input.position, input.position1, (float)((sin((float)(m_time / (float)1000.0f)) + 1.0f) / 2.0f));
 
-		//WORLD SPACE
+	//WORLD SPACE
 	output.position = mul(input.position, m_world);
 	//VIEW SPACE
 	output.position = mul(output.position, m_view);
 	//SCREEN SPACE
 	output.position = mul(output.position, m_proj);
-
 
 	output.color = input.color;
 	output.color1 = input.color1;
