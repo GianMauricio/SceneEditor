@@ -22,18 +22,6 @@ void Cube::update(float windowW, float windowH)
 	Matrix4x4 temp;
 	m_delta_scale += EngineTime::getDeltaTime() / 2.0f;
 
-	/*
-	if (expanding) {
-		scale.m_x += m_delta_scale;
-		scale.m_y += m_delta_scale;
-		scale.m_z -= m_delta_scale;
-	}
-
-	if (scale.m_x >= 2.75f) {
-		expanding = false;
-	}
-	*/
-
 	cc.m_world.setScale(scale);
 
 	temp.setIdentity();
@@ -45,19 +33,6 @@ void Cube::update(float windowW, float windowH)
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	/*
-	if (m_delta_scale >= 1.5) {
-		rotating = false;
-	}
-
-	if (rotating) {
-		temp.setRotationX(m_delta_scale);
-	}
-
-	else {
-		temp.setRotationX(1.5);
-	}
-	*/
 	temp.setRotationX(-0.25);
 	cc.m_world *= temp;
 
@@ -66,7 +41,6 @@ void Cube::update(float windowW, float windowH)
 	cc.m_world *= temp;
 
 	cc.m_view.setIdentity();
-	
 	
 	cc.m_proj.setOrthoLH
 	(

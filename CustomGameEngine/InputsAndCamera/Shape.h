@@ -37,7 +37,7 @@ public:
 	//Core functions
 	virtual void initialize() = 0;
 	void draw();
-	virtual void update(float windowW, float windowH) = 0;
+	virtual void update(float windowW, float windowH);
 	void destroy();
 
 	//Get functions
@@ -49,6 +49,7 @@ public:
 	//Set functions
 	void setPosition(Vector3D newPos);
 	void setScale(Vector3D newScale);
+	void setWorldCam(Matrix4x4 newWorldCam);
 
 protected:
 	VertexBuffer* m_vb;
@@ -63,6 +64,10 @@ protected:
 	float m_delta_pos;
 	float m_delta_scale;
 	float m_delta_rot;
+
+	//Keep this shit safe and not null or the whole shape dies
+	Matrix4x4 m_world_cam;
+
 	Type type = Type::NONE;
 };
 

@@ -27,6 +27,10 @@ void Shape::draw()
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->drawIndexedTriangleList(m_ib->getSizeIndexList(), 0, 0);
 }
 
+void Shape::update(float windowW, float windowH) {
+
+}
+
 void Shape::destroy()
 {
 	//Release buffers
@@ -65,4 +69,9 @@ void Shape::setPosition(Vector3D newPos)
 void Shape::setScale(Vector3D newScale)
 {
 	scale = newScale;
+}
+
+void Shape::setWorldCam(Matrix4x4 newWorldCam)
+{
+	m_world_cam = newWorldCam;
 }

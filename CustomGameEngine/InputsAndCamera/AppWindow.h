@@ -10,6 +10,8 @@
 #include "IndexBuffer.h"
 #include "EngineTime.h"
 #include "Window.h"
+#include "InputListener.h"
+#include "InputSystem.h"
 #include "GraphicsEngine.h"
 #include "SwapChain.h"
 #include "DeviceContext.h"
@@ -18,7 +20,7 @@
 #include "VertexShader.h"
 #include "PixelShader.h"
 
-class AppWindow: public Window
+class AppWindow: public Window, public InputListener
 {
 public:
 	static AppWindow* getInstance();
@@ -28,7 +30,20 @@ public:
 	virtual void onCreate() override;
 	virtual void onUpdate() override;
 	virtual void onDestroy() override;
+	virtual void onFocus() override;
+	virtual void onKillFocus() override;
 
+	//Inherited via InputListener
+	void onKeyDown(int key);
+	void onKeyUp(int key);
+
+	void onMouseMove(const Point& mouse_pos);
+	void onLeftMouseDown(const Point& mouse_pos);
+	void onLeftMouseUp(const Point& mouse_pos);
+	void onRightMouseDown(const Point& mouse_pos);
+	void onRightMouseUp(const Point& mouse_pos);
+
+	//Exclusive functions
 	void initializeEngine();
 	
 private:
@@ -44,8 +59,12 @@ private:
 	Shape* plane;
 	Shape* pyramid;
 
-	bool accelerating = true;
-	float elapsedTime = 0;
-	float m_angle = 0;
+	//Camera values
+	float m_scale_cube = 1;
+	float m_rot_x = 0.0f;
+	float m_rot_y = 0.0f;
+	float m_forward = 0.0f;
+	float m_rightward = 0.0f;
+	Matrix4x4 m_world_cam;
 };
 

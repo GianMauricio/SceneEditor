@@ -30,11 +30,15 @@ void AppWindow::onCreate()
 
 void AppWindow::onUpdate()
 {
+	//Update the window
 	Window::onUpdate();
+
+	//Clear the current render
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->clearRenderTargetColor(this->m_swap_chain, 0, 0.3f, 0.4f, 1);
 	RECT rc = this->getClientWindowRect();
 	float winH = rc.bottom - rc.top;
 	float winW = rc.right - rc.left; 
+
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setViewportSize(winW, winH);
 
 	//Draw and update all shapes
@@ -49,8 +53,90 @@ void AppWindow::onUpdate()
 void AppWindow::onDestroy()
 {
 	Window::onDestroy();
+	//TODO:Release the shape list
 	m_swap_chain->release();
+	//TODO:Release the pixel and vertex shaders
 	GraphicsEngine::getInstance()->release();
+}
+
+void AppWindow::onFocus()
+{
+	InputSystem::get()->addListener(this);
+}
+
+void AppWindow::onKillFocus()
+{
+	InputSystem::get()->removeListener(this);
+}
+
+void AppWindow::onKeyDown(int key)
+{
+	//This works because chars have an implicit integer value attached to them
+	switch (key) 
+	{
+		case 'W':
+			m_forward = 1.0f;
+			break;
+
+		case 'S':
+			m_forward = -1.0f;
+			break;
+
+		case 'A':
+			m_rightward = -1.0f;
+			break;
+
+		case 'D':
+			m_rightward = 1.0f;
+			break;
+
+		default:
+			std::cout << "Key not implemented; key code is: " << key << std::endl;
+			break;
+	}
+}
+
+void AppWindow::onKeyUp(int key)
+{
+	m_forward = 0.0f;
+	m_rightward = 0.0f;
+}
+
+void AppWindow::onMouseMove(const Point& mouse_pos)
+{
+	int width = (this->getClientWindowRect().right - this->getClientWindowRect().left);
+	int height = (this->getClientWindowRect().bottom - this->getClientWindowRect().top);
+
+
+
+	m_rot_x += (mouse_pos.m_y - (height / 2.0f)) * EngineTime::getDeltaTime() * 0.1f;
+	m_rot_y += (mouse_pos.m_x - (width / 2.0f)) * EngineTime::getDeltaTime() * 0.1f;
+
+
+
+	InputSystem::get()->setCursorPosition(Point((int)(width / 2.0f), (int)(height / 2.0f)));
+
+
+}
+
+void AppWindow::onLeftMouseDown(const Point& mouse_pos)
+{
+	m_scale_cube = 0.5f;
+}
+
+void AppWindow::onLeftMouseUp(const Point& mouse_pos)
+{
+	m_scale_cube = 1.0f;
+}
+
+void AppWindow::onRightMouseDown(const Point& mouse_pos)
+{
+	m_scale_cube = 2.0f;
+}
+
+void AppWindow::onRightMouseUp(const Point& mouse_pos)
+{
+	m_scale_cube = 1.0f;
 }
 
 void AppWindow::initializeEngine()

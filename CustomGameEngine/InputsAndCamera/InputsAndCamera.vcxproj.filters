@@ -55,6 +55,9 @@
     <Filter Include="Engine\RenderEngine\ShapeClass\Pyramid">
       <UniqueIdentifier>{d3e30afe-86c3-4bea-bd33-44f68894d416}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\InputSystem">
+      <UniqueIdentifier>{8963c139-2b07-4b9b-aa3b-6977e9eb08e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppWindow.cpp">
@@ -107,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="GraphicsEngine.cpp">
       <Filter>Engine\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="InputSystem.cpp">
+      <Filter>Engine\InputSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +169,18 @@
     </ClInclude>
     <ClInclude Include="GraphicsEngine.h">
       <Filter>Engine\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4D.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="InputListener.h">
+      <Filter>Engine\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem.h">
+      <Filter>Engine\InputSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Engine\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
