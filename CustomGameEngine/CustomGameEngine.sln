@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineTime", "EngineTime\En
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DepthRender", "DepthRender\DepthRender.vcxproj", "{F16B9C94-F069-48E5-B296-63997F0F0E45}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InputsAndCamera", "InputsAndCamera\InputsAndCamera.vcxproj", "{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -97,6 +99,16 @@ Global
 		{F16B9C94-F069-48E5-B296-63997F0F0E45}.Release|x64.Build.0 = Release|x64
 		{F16B9C94-F069-48E5-B296-63997F0F0E45}.Release|x86.ActiveCfg = Release|Win32
 		{F16B9C94-F069-48E5-B296-63997F0F0E45}.Release|x86.Build.0 = Release|Win32
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Debug|x64.ActiveCfg = Debug|x64
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Debug|x64.Build.0 = Debug|x64
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Debug|x86.ActiveCfg = Debug|Win32
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Debug|x86.Build.0 = Debug|Win32
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Release|ARM64.ActiveCfg = Release|Win32
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Release|x64.ActiveCfg = Release|x64
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Release|x64.Build.0 = Release|x64
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Release|x86.ActiveCfg = Release|Win32
+		{FFBC86C6-1B78-4CB9-A0AF-B56A214A0E25}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
