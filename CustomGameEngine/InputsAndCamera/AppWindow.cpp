@@ -163,15 +163,26 @@ void AppWindow::initializeEngine()
 
 	m_swap_chain->init(this->getWindowHandle(), width, height);
 	
-	Shape* temp = new Cube();
+	
+	for (int i = 0; i < 20; i++) {
+		Shape* temp = new Cube();
+		//Make not null exception
+		temp->initialize();
+		//make each shape small so that it doesn't eat the screen
+		temp->setScale(Vector3D(1.0, 1.0, 1.0));
 
-	//Make not null exception
-	temp->initialize();
+		//add new shape to list
+		shape_list.push_back(temp);
+	}
 
-	//make each shape small so that it doesn't eat the screen
-	temp->setScale(Vector3D(1.0, 1.0, 1.0));
-	temp->setPosition(Vector3D(2.0, 0.0, 2.0));
+	//Randomize the position of all shapes
+	for (Shape* curr : shape_list) {
+		//Create 2 random numbers for x and z
+		float x = -4.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (8.0)));
+		float z = -4.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (8.0)));
 
-	//add new shape to list
-	shape_list.push_back(temp);
+		Vector3D randPos = Vector3D(x, 1.0f, z);
+
+		curr->setPosition(randPos);
+	}
 }

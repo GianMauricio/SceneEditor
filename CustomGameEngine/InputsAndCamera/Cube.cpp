@@ -29,18 +29,20 @@ void Cube::update(float windowW, float windowH)
 	//Create temp matrix to fulfill backwards multiplication logic
 	Matrix4x4 temp;
 
+	//Account for rotations
 	temp.setIdentity();
-	//temp.setRotationZ();
+	temp.setRotationZ(rotation_vals.m_z);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	//temp.setRotationY();
+	temp.setRotationY(rotation_vals.m_y);
 	cc.m_world *= temp;
 
 	temp.setIdentity();
-	//temp.setRotationX();
+	temp.setRotationX(rotation_vals.m_x);
 	cc.m_world *= temp;
 
+	//Account for translations
 	temp.setIdentity();
 	temp.setTranslation(position);
 	cc.m_world *= temp;
@@ -162,6 +164,9 @@ void Cube::initialize()
 
 	//Set own scale to unit size
 	scale = Vector3D(1.0f, 1.0f, 1.0f);
+
+	//Set own rotations to 0 across all axes
+	rotation_vals = Vector3D(0.0f, 0.0f, 0.0f);
 
 	//Create constant buffer
 	constant cc;
