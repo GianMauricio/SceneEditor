@@ -16,41 +16,40 @@ void Cube::update(float windowW, float windowH)
 	cc.m_time = EngineTime::getDeltaTime();
 
 	//Calculate new position values
-	m_delta_pos += EngineTime::getDeltaTime();
+	m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
+	if (m_delta_pos > 1.0f)
+		m_delta_pos = 0;
+
+	//Calculate for new scale
+	m_delta_scale += EngineTime::getDeltaTime() / 2.0f;
 
 	//Create transform matrix
 	Matrix4x4 temp;
-	m_delta_scale += EngineTime::getDeltaTime() / 2.0f;
-
-	cc.m_world.setScale(scale);
-
-	temp.setIdentity();
-	//temp.setRotationZ(0.25);
-	cc.m_world *= temp;
+	Matrix4x4 world_cam;
+	world_cam.setIdentity();
 
 	temp.setIdentity();
-	temp.setRotationY(0.45);
-	cc.m_world *= temp;
+	temp.setRotationX(m_rot_x);
+	world_cam *= temp;
 
 	temp.setIdentity();
-	temp.setRotationX(-0.25);
-	cc.m_world *= temp;
+	temp.setRotationY(m_rot_y);
+	world_cam *= temp;
 
-	temp.setIdentity();
-	temp.setTranslation(position);
-	cc.m_world *= temp;
 
-	cc.m_view.setIdentity();
-	
-	cc.m_proj.setOrthoLH
-	(
-		windowW / 100.0f,
-		windowH / 100.0f,
-		-6.0f,
-		10.0f
-	);
-	
-	//cc.m_proj.setPerspectiveFovLH(1.57, ((float)windowW / (float)windowH), 0.1f, 100.0f);
+	Vector3D new_pos = m_world_cam.getTranslation() + world_cam.getZDirection() * (m_forward * 0.1f);
+
+	new_pos = new_pos + world_cam.getXDirection() * (m_rightward * 0.1f);
+
+	world_cam.setTranslation(new_pos);
+
+	m_world_cam = world_cam;
+
+	world_cam.inverse();
+
+	cc.m_view = world_cam;
+
+	cc.m_proj.setPerspectiveFovLH(1.57f, (windowW / windowH), 0.1f, 100.0f);
 
 	m_cb->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 }
@@ -121,19 +120,18 @@ void Cube::initialize()
 
 	GraphicsEngine::getInstance()->releaseCompiledShader();
 
-
 	GraphicsEngine::getInstance()->compilePixelShader(L"PixelShader.hlsl", "psmain", &shader_byte_code, &size_shader);
 	m_ps = GraphicsEngine::getInstance()->createPixelShader(shader_byte_code, size_shader);
 	GraphicsEngine::getInstance()->releaseCompiledShader();
-
-	//Create constant buffer
-	constant cc;
-	m_cb = GraphicsEngine::getInstance()->createConstantBuffer();
-	m_cb->load(&cc, sizeof(constant));
 
 	//Set own position to world origin to start
 	position = Vector3D(0.0f, 0.0f, 0.0f);
 
 	//Set own scale to unit size
 	scale = Vector3D(1.0f, 1.0f, 1.0f);
+
+	//Create constant buffer
+	constant cc;
+	m_cb = GraphicsEngine::getInstance()->createConstantBuffer();
+	m_cb->load(&cc, sizeof(constant));
 }

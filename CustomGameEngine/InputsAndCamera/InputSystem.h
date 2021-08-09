@@ -16,8 +16,8 @@ public:
 	void setCursorPosition(const Point& pos);
 	void showCursor(bool show);
 
-public:
-	static InputSystem* get();
+	static InputSystem* getInstance();
+
 private:	
 	std::unordered_set<InputListener*> m_set_listeners;
 	unsigned char m_keys_state[256] = {};

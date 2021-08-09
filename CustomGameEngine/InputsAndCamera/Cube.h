@@ -10,8 +10,6 @@ public:
 	void initialize();
 private:
 
-	bool expanding = true;
-	bool rotating = true;
 	float offsetvalue = 0;
 	Vector3D currscale = Vector3D(1, 1, 1);
 };

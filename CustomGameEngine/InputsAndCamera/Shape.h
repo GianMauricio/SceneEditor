@@ -37,7 +37,7 @@ public:
 	//Core functions
 	virtual void initialize() = 0;
 	void draw();
-	virtual void update(float windowW, float windowH);
+	virtual void update(float windowW, float windowH) = 0;
 	void destroy();
 
 	//Get functions
@@ -49,7 +49,11 @@ public:
 	//Set functions
 	void setPosition(Vector3D newPos);
 	void setScale(Vector3D newScale);
-	void setWorldCam(Matrix4x4 newWorldCam);
+
+	void setRotX(float newRot);
+	void setRotY(float newRot);
+	void setZoomFactor(float newZoom);
+	void setPerspective(float newForward, float newRightward);
 
 protected:
 	VertexBuffer* m_vb;
@@ -65,7 +69,15 @@ protected:
 	float m_delta_scale;
 	float m_delta_rot;
 
-	//Keep this shit safe and not null or the whole shape dies
+	//Camera values
+	float m_rot_x = 0.0f;
+	float m_rot_y = 0.0f;
+
+	float m_scale_cube = 1;
+	float m_forward = 0.0f;
+	float m_rightward = 0.0f;
+
+	//Fucking preserve this shit
 	Matrix4x4 m_world_cam;
 
 	Type type = Type::NONE;

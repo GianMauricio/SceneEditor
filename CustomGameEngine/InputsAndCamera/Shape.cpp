@@ -10,6 +10,7 @@ Shape::~Shape()
 
 void Shape::draw()
 {
+	//std::cout << "drawing" << std::endl;
 	//Draw the triangles by indice
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setConstantBuffer(m_vs, m_cb);
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setConstantBuffer(m_ps, m_cb);
@@ -25,10 +26,6 @@ void Shape::draw()
 
 	//Draw
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->drawIndexedTriangleList(m_ib->getSizeIndexList(), 0, 0);
-}
-
-void Shape::update(float windowW, float windowH) {
-
 }
 
 void Shape::destroy()
@@ -71,7 +68,23 @@ void Shape::setScale(Vector3D newScale)
 	scale = newScale;
 }
 
-void Shape::setWorldCam(Matrix4x4 newWorldCam)
+void Shape::setRotX(float newRot)
 {
-	m_world_cam = newWorldCam;
+	m_rot_x = newRot;
+}
+
+void Shape::setRotY(float newRot)
+{
+	m_rot_y = newRot;
+}
+
+void Shape::setZoomFactor(float newZoom)
+{
+	m_scale_cube = newZoom;
+}
+
+void Shape::setPerspective(float newForward, float newRightward)
+{
+	m_forward = newForward;
+	m_rightward = newRightward;
 }

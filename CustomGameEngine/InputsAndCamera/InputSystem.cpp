@@ -110,7 +110,7 @@ void InputSystem::showCursor(bool show)
 	::ShowCursor(show);
 }
 
-InputSystem * InputSystem::get()
+InputSystem * InputSystem::getInstance()
 {
 	static InputSystem system;
 	return &system;
