@@ -23,28 +23,61 @@ void Cube::update(float windowW, float windowH)
 	//Calculate for new scale
 	m_delta_scale += EngineTime::getDeltaTime() / 2.0f;
 
-	//Create transform matrix
+	//Set world scale first
+	cc.m_world.setScale(scale);
+
+	//Create temp matrix to fulfill backwards multiplication logic
 	Matrix4x4 temp;
-	Matrix4x4 world_cam;
-	world_cam.setIdentity();
 
 	temp.setIdentity();
+	//temp.setRotationZ();
+	cc.m_world *= temp;
+
+	temp.setIdentity();
+	//temp.setRotationY();
+	cc.m_world *= temp;
+
+	temp.setIdentity();
+	//temp.setRotationX();
+	cc.m_world *= temp;
+
+	temp.setIdentity();
+	temp.setTranslation(position);
+	cc.m_world *= temp;
+
+	//Create transform matrix for worldCamera
+	Matrix4x4 world_cam;
+
+	//Set world cam to identity
+	world_cam.setIdentity();
+
+	//Reset temp
+	temp.setIdentity();
+
+	//Account for camera Y
 	temp.setRotationX(m_rot_x);
 	world_cam *= temp;
 
+	//Reset Temp
 	temp.setIdentity();
+
+	//Account for camera X
 	temp.setRotationY(m_rot_y);
 	world_cam *= temp;
 
-
+	//Get the world camera's position
 	Vector3D new_pos = m_world_cam.getTranslation() + world_cam.getZDirection() * (m_forward * 0.1f);
 
+	//Account for world cam position
 	new_pos = new_pos + world_cam.getXDirection() * (m_rightward * 0.1f);
 
+	//Adjust own position
 	world_cam.setTranslation(new_pos);
 
+	//Update world camera position for next frame
 	m_world_cam = world_cam;
 
+	//Invert world camera so that the perspective view doesn't break
 	world_cam.inverse();
 
 	cc.m_view = world_cam;

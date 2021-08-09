@@ -64,6 +64,7 @@ protected:
 
 	Vector3D position;
 	Vector3D scale;
+	Vector3D rotation_vals; /*Use this as float container*/
 
 	float m_delta_pos;
 	float m_delta_scale;
@@ -77,7 +78,7 @@ protected:
 	float m_forward = 0.0f;
 	float m_rightward = 0.0f;
 
-	//Fucking preserve this shit
+	//Fucking preserve this shit for the love of god, if this thing dies we all die with it
 	Matrix4x4 m_world_cam;
 
 	Type type = Type::NONE;
