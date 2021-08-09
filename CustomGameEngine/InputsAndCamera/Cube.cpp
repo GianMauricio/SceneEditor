@@ -13,22 +13,21 @@ void Cube::update(float windowW, float windowH)
 {
 	//Update time value
 	constant cc;
-	cc.m_time = EngineTime::getDeltaTime();
-
-	//Calculate new position values
+	
+	//Calculate new time values
 	m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
-	if (m_delta_pos > 1.0f)
+	if (m_delta_pos > 10.0f)
 		m_delta_pos = 0;
-
-	//Calculate for new scale
-	m_delta_scale += EngineTime::getDeltaTime() / 2.0f;
+	cc.m_time = m_delta_pos;
 
 	//Set world scale first
+	cc.m_world.setIdentity();
 	cc.m_world.setScale(scale);
 
 	//Create temp matrix to fulfill backwards multiplication logic
 	Matrix4x4 temp;
 
+	/*
 	//Account for rotations
 	temp.setIdentity();
 	temp.setRotationZ(rotation_vals.m_z);
@@ -41,15 +40,17 @@ void Cube::update(float windowW, float windowH)
 	temp.setIdentity();
 	temp.setRotationX(rotation_vals.m_x);
 	cc.m_world *= temp;
+	*/
 
 	//Account for translations
 	temp.setIdentity();
 	temp.setTranslation(position);
 	cc.m_world *= temp;
+	
 
 	//Create transform matrix for worldCamera
 	Matrix4x4 world_cam;
-
+	
 	//Set world cam to identity
 	world_cam.setIdentity();
 
@@ -120,20 +121,25 @@ void Cube::initialize()
 	unsigned int index_list[] =
 	{
 		//FRONT SIDE
-		0,1,2,  //FIRST TRIANGLE
-		2,3,0,  //SECOND TRIANGLE
+		0,1,2,  
+		2,3,0,
+
 		//BACK SIDE
 		4,5,6,
 		6,7,4,
+
 		//TOP SIDE
 		1,6,5,
 		5,2,1,
+
 		//BOTTOM SIDE
 		7,0,3,
 		3,4,7,
+
 		//RIGHT SIDE
 		3,2,5,
 		5,4,3,
+
 		//LEFT SIDE
 		7,6,1,
 		1,0,7
