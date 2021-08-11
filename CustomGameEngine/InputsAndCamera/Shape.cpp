@@ -46,7 +46,6 @@ void Shape::update(float windowW, float windowH)
 	//Create temp matrix to fulfill backwards multiplication logic
 	Matrix4x4 temp;
 
-	/*
 	//Account for rotations
 	temp.setIdentity();
 	temp.setRotationZ(rotation_vals.m_z);
@@ -59,8 +58,7 @@ void Shape::update(float windowW, float windowH)
 	temp.setIdentity();
 	temp.setRotationX(rotation_vals.m_x);
 	cc.m_world *= temp;
-	*/
-
+	
 	//Account for translations
 	temp.setIdentity();
 	temp.setTranslation(position);
@@ -68,19 +66,7 @@ void Shape::update(float windowW, float windowH)
 
 	cc.m_view = CameraList::getInstance()->getCurrentCamera();
 
-	if (viewPers) {
-		cc.m_proj.setPerspectiveFovLH(1.57f, (windowW / windowH), 0.1f, 100.0f);
-	}
-
-	else {
-		cc.m_proj.setOrthoLH
-		(
-			(windowW) / 100.0f,
-			(windowH) / 100.0f,
-			0.1f,
-			100.0f
-		);
-	}
+	cc.m_proj = CameraList::getInstance()->getProjectionMatrix();
 
 	m_cb->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
 }

@@ -17,47 +17,49 @@ void Camera::update(float deltaTime)
 	//Create transform matrices for worldCamera calculations
 	Matrix4x4 temp;
 
+	//Set viewmatrix to identity
 	viewMatrix.setIdentity();
 
-	if (viewPers) {
-		temp.setIdentity();
-		temp.setRotationX(m_rot_x);
-		viewMatrix *= temp;
-
-		temp.setIdentity();
-		temp.setRotationY(m_rot_y);
-		viewMatrix *= temp;
+	if (zoomIn) {
+		m_scale_cube += 0.5f * deltaTime;
+		zoom_value += 20.0f * deltaTime;
 	}
 
-	else {
-		temp.setIdentity();
-		temp.setRotationX(0.0001f);
-		viewMatrix *= temp;
-
-		temp.setIdentity();
-		temp.setRotationY(0.0001f);
-		viewMatrix *= temp;
+	if (zoomOut) {
+		m_scale_cube -= 0.5f * deltaTime;
+		zoom_value -= 20.0f * deltaTime;
 	}
+
+	//Account for world scaling
+
+
+	//Account for rotation
+	temp.setIdentity();
+	temp.setRotationX(m_rot_x);
+	viewMatrix *= temp;
+
+	temp.setIdentity();
+	temp.setRotationY(m_rot_y);
+	viewMatrix *= temp;
 
 	Vector3D new_pos = m_world_cam.getTranslation();
 	Vector3D orthoPos = Vector3D(new_pos.m_x, new_pos.m_y, -10);
 
-	//Account for displacement Vertical
 	if (viewPers) {
-		new_pos = m_world_cam.getTranslation() + viewMatrix.getZDirection() * (m_forward * 0.1f);
+		new_pos = m_world_cam.getTranslation() + viewMatrix.getZDirection() * (m_forward * deltaTime * 10);
 
 		//Account for displacement Horizontal
-		new_pos = new_pos + viewMatrix.getXDirection() * (m_rightward * 0.1f);
+		new_pos = new_pos + viewMatrix.getXDirection() * (m_rightward * deltaTime * 10);
 
 		//Adjust own position
 		viewMatrix.setTranslation(new_pos);
 	}
 
 	else {
-		orthoPos = orthoPos + m_world_cam.getYDirection() * (m_forward * 0.1f);
+		orthoPos = orthoPos + m_world_cam.getYDirection() * (m_forward * deltaTime * 10);
 
 		//Account for displacement Horizontal
-		orthoPos = orthoPos + m_world_cam.getXDirection() * (m_rightward * 0.1f);
+		orthoPos = orthoPos + m_world_cam.getXDirection() * (m_rightward * deltaTime * 10);
 
 		//Adjust own position
 		viewMatrix.setTranslation(orthoPos);
@@ -67,11 +69,31 @@ void Camera::update(float deltaTime)
 	m_world_cam = viewMatrix;
 
 	viewMatrix.inverse();
+
+	//Generate new projectiong matrix
+	if (viewPers) {
+		projMatrix.setPerspectiveFovLH(1.57f, (winW / winH), 0.1f, 100.0f);
+	}
+
+	else {
+		projMatrix.setOrthoLH
+		(
+			winW / zoom_value,
+			winH / zoom_value,
+			0.1f,
+			100.0f
+		);
+	}
 }
 
 Matrix4x4 Camera::getViewmatrix()
 {
 	return viewMatrix;
+}
+
+Matrix4x4 Camera::getProjMatrix()
+{
+	return projMatrix;
 }
 
 void Camera::setWindowDimensions(float newWinW, float newWinH)
@@ -133,23 +155,27 @@ void Camera::onMouseMove(const Point& mouse_pos)
 void Camera::onLeftMouseDown(const Point& mouse_pos)
 {
 	//std::cout << "mouse 1 down" << std::endl;
-	m_scale_cube = 0.5f;
+	//m_scale_cube += 0.1f;
+	zoomIn = true;
 }
 
 void Camera::onLeftMouseUp(const Point& mouse_pos)
 {
 	//std::cout << "mouse 1 up" << std::endl;
-	m_scale_cube = 1.0f;
+	//m_scale_cube = 1.0f;
+	zoomIn = false;
 }
 
 void Camera::onRightMouseDown(const Point& mouse_pos)
 {
 	//std::cout << "mouse 2 down" << std::endl;
-	m_scale_cube = 2.0f;
+	//m_scale_cube -= 0.5f;
+	zoomOut = true;
 }
 
 void Camera::onRightMouseUp(const Point& mouse_pos)
 {
 	//std::cout << "mouse 2 up" << std::endl;
-	m_scale_cube = 1.0f;
+	//m_scale_cube = 1.0f;
+	zoomOut = false;
 }

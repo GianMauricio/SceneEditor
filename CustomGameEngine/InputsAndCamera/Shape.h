@@ -70,6 +70,8 @@ protected:
 
 	//View
 	bool viewPers = true;
+	float near_plane = 0.1f;
+	float far_plane = 100.0f;
 
 	Type type = Type::NONE;
 };

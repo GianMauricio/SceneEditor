@@ -70,11 +70,13 @@ void AppWindow::onDestroy()
 void AppWindow::onFocus()
 {
 	InputSystem::getInstance()->addListener(this);
+	//InputSystem::getInstance()->addListener(CameraList::getInstance()->getCamera());
 }
 
 void AppWindow::onKillFocus()
 {
 	InputSystem::getInstance()->removeListener(this);
+	//InputSystem::getInstance()->removeListener(CameraList::getInstance()->getCamera());
 }
 
 void AppWindow::onKeyDown(int key)

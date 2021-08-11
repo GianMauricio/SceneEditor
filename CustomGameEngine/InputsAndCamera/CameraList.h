@@ -9,7 +9,9 @@ public:
 
 	void update();
 
+	Camera* getCamera();
 	Matrix4x4 getCurrentCamera();
+	Matrix4x4 getProjectionMatrix();
 
 private:
 	CameraList();

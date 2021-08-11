@@ -13,6 +13,7 @@ public:
 	//Internal functions
 	void update(float deltaTime);
 	Matrix4x4 getViewmatrix();
+	Matrix4x4 getProjMatrix();
 
 	//Set functions
 	void setWindowDimensions(float newWinW, float newWinH);
@@ -31,6 +32,7 @@ public:
 
 private:
 	Matrix4x4 viewMatrix;
+	Matrix4x4 projMatrix;
 
 	//Window values
 	float winW, winH;
@@ -39,9 +41,14 @@ private:
 	float m_rot_x = 0.0f;
 	float m_rot_y = 0.0f;
 
+	bool zoomIn = false;
+	bool zoomOut = false;
+
 	float m_scale_cube = 1;
 	float m_forward = 0.0f;
 	float m_rightward = 0.0f;
+
+	float zoom_value = 100.0f;
 
 	//Fucking preserve this shit for the love of god, if this thing dies we all die with it
 	bool viewPers = true;

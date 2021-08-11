@@ -22,9 +22,19 @@ void CameraList::update()
 	currentCamera->update(EngineTime::getDeltaTime());
 }
 
+Camera* CameraList::getCamera()
+{
+	return currentCamera;
+}
+
 Matrix4x4 CameraList::getCurrentCamera()
 {
 	return currentCamera->getViewmatrix();
+}
+
+Matrix4x4 CameraList::getProjectionMatrix()
+{
+	return currentCamera->getProjMatrix();
 }
 
 CameraList::CameraList()
