@@ -10,7 +10,6 @@
 #include "IndexBuffer.h"
 #include "EngineTime.h"
 #include "Window.h"
-#include "CameraList.h"
 #include "InputListener.h"
 #include "InputSystem.h"
 #include "GraphicsEngine.h"
@@ -54,7 +53,13 @@ private:
 	AppWindow& operator = (AppWindow const&) {};
 	static AppWindow* sharedInstance;
 
-	bool viewPers = true;
+	//Camera values
+	float m_rot_x = 0.0f;
+	float m_rot_y = 0.0f;
+
+	float m_scale_cube = 1;
+	float m_forward = 0.0f;
+	float m_rightward = 0.0f;
 
 	SwapChain * m_swap_chain;
 	std::vector<Shape*> shape_list;

@@ -45,11 +45,14 @@ void AppWindow::onUpdate()
 	float winW = rc.right - rc.left; 
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->setViewportSize(winW, winH);
 
-	//Update camera
-	CameraList::getInstance()->update();
-
 	//Draw and update all shapes
 	for (Shape* curr : shape_list) {
+		//Set new world params
+		curr->setPerspective(m_forward, m_rightward);
+		curr->setRotX(m_rot_x);
+		curr->setRotY(m_rot_y);
+		curr->setZoomFactor(m_scale_cube);
+
 		//Update shapes
 		curr->update(winW, winH);
 		curr->draw();
@@ -82,51 +85,68 @@ void AppWindow::onKeyDown(int key)
 	//This works because chars have an implicit integer value attached to them
 	switch (key) 
 	{
-		case 'P':
-			for (Shape* shape : shape_list) {
-				shape->setViewPers(true);
-			}
-
-			/*std::cout << "Rightwards: " << m_rightward << std::endl;
-			std::cout << "Forwards: " << m_forward << std::endl;
-			std::cout << "RotX: " << m_rot_x << std::endl;
-			std::cout << "RotY: " << m_rot_y << std::endl;*/
+		case 'W':
+			m_forward = 1.0f;
 			break;
 
-		case 'O':
-			for (Shape* shape : shape_list) {
-				shape->setViewPers(false);
-			}
+		case 'S':
+			m_forward = -1.0f;
+			break;
+
+		case 'A':
+			m_rightward = -1.0f;
+			break;
+
+		case 'D':
+			m_rightward = 1.0f;
 			break;
 
 		default:
-			//std::cout << "Key not implemented; key code is: " << key << std::endl;
+			std::cout << "Key not implemented; key code is: " << key << std::endl;
 			break;
 	}
 }
 
 void AppWindow::onKeyUp(int key)
 {
+	m_forward = 0.0f;
+	m_rightward = 0.0f;
 }
 
 void AppWindow::onMouseMove(const Point& mouse_pos)
 {
+	//std::cout << "mouse moved" << std::endl;
+	int width = (this->getClientWindowRect().right - this->getClientWindowRect().left);
+	int height = (this->getClientWindowRect().bottom - this->getClientWindowRect().top);
+
+	m_rot_x += (mouse_pos.m_y - (height / 2.0f)) * EngineTime::getDeltaTime() * 0.1f;
+	m_rot_y += (mouse_pos.m_x - (width / 2.0f)) * EngineTime::getDeltaTime() * 0.1f;
+
+	InputSystem::getInstance()->setCursorPosition(Point((int)(width / 2.0f), (int)(height / 2.0f)));
 }
 
 void AppWindow::onLeftMouseDown(const Point& mouse_pos)
 {
+	//std::cout << "mouse 1 down" << std::endl;
+	m_scale_cube = 0.5f;
 }
 
 void AppWindow::onLeftMouseUp(const Point& mouse_pos)
 {
+	//std::cout << "mouse 1 up" << std::endl;
+	m_scale_cube = 1.0f;
 }
 
 void AppWindow::onRightMouseDown(const Point& mouse_pos)
 {
+	//std::cout << "mouse 2 down" << std::endl;
+	m_scale_cube = 2.0f;
 }
 
 void AppWindow::onRightMouseUp(const Point& mouse_pos)
 {
+	//std::cout << "mouse 2 up" << std::endl;
+	m_scale_cube = 1.0f;
 }
 
 void AppWindow::initializeEngine()
@@ -135,14 +155,11 @@ void AppWindow::initializeEngine()
 	srand(time(NULL));
 	GraphicsEngine::getInstance()->initialize();
 	EngineTime::initialize();
-	
 	m_swap_chain = GraphicsEngine::getInstance()->createSwapChain();
 
 	RECT rc = this->getClientWindowRect();
 	int width = rc.right - rc.left;
 	int height = rc.bottom - rc.top;
-	
-	CameraList::initialize(width, height);
 
 	m_swap_chain->init(this->getWindowHandle(), width, height);
 	
@@ -163,10 +180,9 @@ void AppWindow::initializeEngine()
 	for (Shape* curr : shape_list) {
 		//Create 2 random numbers for x and z
 		float x = -4.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (8.0)));
-		float y = -4.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (8.0)));
-		float z = -2.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (2.0)));
+		float z = -4.0f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (8.0)));
 
-		Vector3D randPos = Vector3D(x, y, z);
+		Vector3D randPos = Vector3D(x, 1.0f, z);
 
 		curr->setPosition(randPos);
 	}

@@ -58,6 +58,9 @@
     <Filter Include="Engine\InputSystem">
       <UniqueIdentifier>{8963c139-2b07-4b9b-aa3b-6977e9eb08e9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\RenderEngine\Camera">
+      <UniqueIdentifier>{21cd0541-21b3-468e-980a-3733d9bbfe36}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppWindow.cpp">
@@ -113,6 +116,12 @@
     </ClCompile>
     <ClCompile Include="InputSystem.cpp">
       <Filter>Engine\InputSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Engine\RenderEngine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraList.cpp">
+      <Filter>Engine\RenderEngine\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +190,12 @@
     </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Engine\RenderEngine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraList.h">
+      <Filter>Engine\RenderEngine\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

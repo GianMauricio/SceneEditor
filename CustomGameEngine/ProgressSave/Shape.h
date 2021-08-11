@@ -2,7 +2,6 @@
 #include "Window.h"
 #include "Vector3D.h"
 #include "Matrix4x4.h"
-#include "CameraList.h"
 #include "GraphicsEngine.h"
 #include "SwapChain.h"
 #include "DeviceContext.h"
@@ -38,7 +37,7 @@ public:
 	//Core functions
 	virtual void initialize() = 0;
 	void draw();
-	void update(float windowW, float windowH);
+	virtual void update(float windowW, float windowH) = 0;
 	void destroy();
 
 	//Get functions
@@ -46,12 +45,15 @@ public:
 	ConstantBuffer* getCB();
 	VertexShader* getVS();
 	PixelShader* getPS();
-	bool getViewPers();
 
 	//Set functions
 	void setPosition(Vector3D newPos);
 	void setScale(Vector3D newScale);
-	void setViewPers(bool newView);
+
+	void setRotX(float newRot);
+	void setRotY(float newRot);
+	void setZoomFactor(float newZoom);
+	void setPerspective(float newForward, float newRightward);
 
 protected:
 	VertexBuffer* m_vb;
@@ -68,8 +70,16 @@ protected:
 	float m_delta_scale;
 	float m_delta_rot;
 
-	//View
-	bool viewPers = true;
+	//Camera values
+	float m_rot_x = 0.0f;
+	float m_rot_y = 0.0f;
+
+	float m_scale_cube = 1;
+	float m_forward = 0.0f;
+	float m_rightward = 0.0f;
+
+	//Fucking preserve this shit for the love of god, if this thing dies we all die with it
+	Matrix4x4 m_world_cam;
 
 	Type type = Type::NONE;
 };

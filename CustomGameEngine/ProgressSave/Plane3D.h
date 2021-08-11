@@ -7,6 +7,7 @@ public:
 	~Plane3D();
 
 	void initialize();
+	void update(float windowW, float windowH);
 private:
 };
 

@@ -28,63 +28,6 @@ void Shape::draw()
 	GraphicsEngine::getInstance()->getImmediateDeviceContext()->drawIndexedTriangleList(m_ib->getSizeIndexList(), 0, 0);
 }
 
-void Shape::update(float windowW, float windowH)
-{
-	//Update time value
-	constant cc;
-
-	//Calculate new time values
-	m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
-	if (m_delta_pos > 10.0f)
-		m_delta_pos = 0;
-	cc.m_time = m_delta_pos;
-
-	//Set world scale first
-	cc.m_world.setIdentity();
-	cc.m_world.setScale(scale);
-
-	//Create temp matrix to fulfill backwards multiplication logic
-	Matrix4x4 temp;
-
-	/*
-	//Account for rotations
-	temp.setIdentity();
-	temp.setRotationZ(rotation_vals.m_z);
-	cc.m_world *= temp;
-
-	temp.setIdentity();
-	temp.setRotationY(rotation_vals.m_y);
-	cc.m_world *= temp;
-
-	temp.setIdentity();
-	temp.setRotationX(rotation_vals.m_x);
-	cc.m_world *= temp;
-	*/
-
-	//Account for translations
-	temp.setIdentity();
-	temp.setTranslation(position);
-	cc.m_world *= temp;
-
-	cc.m_view = CameraList::getInstance()->getCurrentCamera();
-
-	if (viewPers) {
-		cc.m_proj.setPerspectiveFovLH(1.57f, (windowW / windowH), 0.1f, 100.0f);
-	}
-
-	else {
-		cc.m_proj.setOrthoLH
-		(
-			(windowW) / 100.0f,
-			(windowH) / 100.0f,
-			0.1f,
-			100.0f
-		);
-	}
-
-	m_cb->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
-}
-
 void Shape::destroy()
 {
 	//Release buffers
@@ -125,12 +68,23 @@ void Shape::setScale(Vector3D newScale)
 	scale = newScale;
 }
 
-bool Shape::getViewPers()
+void Shape::setRotX(float newRot)
 {
-	return viewPers;
+	m_rot_x = newRot;
 }
 
-void Shape::setViewPers(bool newView)
+void Shape::setRotY(float newRot)
 {
-	viewPers = newView;
+	m_rot_y = newRot;
+}
+
+void Shape::setZoomFactor(float newZoom)
+{
+	m_scale_cube = newZoom;
+}
+
+void Shape::setPerspective(float newForward, float newRightward)
+{
+	m_forward = newForward;
+	m_rightward = newRightward;
 }

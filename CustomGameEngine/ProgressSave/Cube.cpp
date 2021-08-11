@@ -9,6 +9,87 @@ Cube::~Cube()
 {
 }
 
+void Cube::update(float windowW, float windowH)
+{
+	//Update time value
+	constant cc;
+	
+	//Calculate new time values
+	m_delta_pos += EngineTime::getDeltaTime() / 10.0f;
+	if (m_delta_pos > 10.0f)
+		m_delta_pos = 0;
+	cc.m_time = m_delta_pos;
+
+	//Set world scale first
+	cc.m_world.setIdentity();
+	cc.m_world.setScale(scale);
+
+	//Create temp matrix to fulfill backwards multiplication logic
+	Matrix4x4 temp;
+
+	/*
+	//Account for rotations
+	temp.setIdentity();
+	temp.setRotationZ(rotation_vals.m_z);
+	cc.m_world *= temp;
+
+	temp.setIdentity();
+	temp.setRotationY(rotation_vals.m_y);
+	cc.m_world *= temp;
+
+	temp.setIdentity();
+	temp.setRotationX(rotation_vals.m_x);
+	cc.m_world *= temp;
+	*/
+
+	//Account for translations
+	temp.setIdentity();
+	temp.setTranslation(position);
+	cc.m_world *= temp;
+	
+
+	//Create transform matrix for worldCamera
+	Matrix4x4 world_cam;
+	
+	//Set world cam to identity
+	world_cam.setIdentity();
+
+	//Reset temp
+	temp.setIdentity();
+
+	//Account for camera Y
+	temp.setRotationX(m_rot_x);
+	world_cam *= temp;
+
+	//Reset Temp
+	temp.setIdentity();
+
+	//Account for camera X
+	temp.setRotationY(m_rot_y);
+	world_cam *= temp;
+
+	//Get the world camera's position
+	Vector3D new_pos = m_world_cam.getTranslation() + world_cam.getZDirection() * (m_forward * 0.1f);
+
+	//Account for world cam position
+	new_pos = new_pos + world_cam.getXDirection() * (m_rightward * 0.1f);
+
+	//Adjust own position
+	world_cam.setTranslation(new_pos);
+
+	//Update world camera position for next frame
+	m_world_cam = world_cam;
+
+	//Invert world camera so that the perspective view doesn't break
+	world_cam.inverse();
+
+	cc.m_view = world_cam;
+
+	cc.m_proj.setPerspectiveFovLH(1.57f, (windowW / windowH), 0.1f, 100.0f);
+
+	m_cb->update(GraphicsEngine::getInstance()->getImmediateDeviceContext(), &cc);
+}
+
 void Cube::initialize()
 {
 	//Get instance of engine

@@ -6,6 +6,7 @@ public:
 	Cube();
 	~Cube();
 
+	void update(float windowW, float windowH);
 	void initialize();
 private:
 
