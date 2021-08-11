@@ -31,7 +31,11 @@ void Camera::update(float deltaTime)
 	}
 
 	//Account for world scaling
-
+	/*
+	temp.setIdentity();
+	temp.setScale(Vector3D(m_scale_cube, m_scale_cube, m_scale_cube));
+	viewMatrix *= temp;
+	*/
 
 	//Account for rotation
 	temp.setIdentity();
@@ -70,7 +74,7 @@ void Camera::update(float deltaTime)
 
 	viewMatrix.inverse();
 
-	//Generate new projectiong matrix
+	//Generate new projection matrix
 	if (viewPers) {
 		projMatrix.setPerspectiveFovLH(1.57f, (winW / winH), 0.1f, 100.0f);
 	}
